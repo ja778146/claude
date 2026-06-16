@@ -1,301 +1,428 @@
-# GoHighLevel AI Builder — Step-by-Step Build Prompts
+# GoHighLevel AI Builder — Step-by-Step Build Prompts (v2 — fully updated)
 
-Copy each prompt **as-is** into the GHL AI website/funnel builder, one page at a time, in
-order. Each prompt is self-contained (it restates the brand so the AI doesn't lose context
-between pages). After the AI generates a page, use the follow-up "refinement" lines beneath
-each prompt to fix anything it misses.
+Copy each prompt **as-is** into the GHL AI website/funnel builder, one page at a time.
+Each prompt is self-contained (brand is repeated every time — the AI loses context between pages).
+After generating, use the **Refine** lines beneath each prompt one at a time.
 
-**Funnel order:** Landing → Application → Booking → Thank You.
+**Funnel order:** Landing Page → Application → Booking → Thank You
 
 ---
 
-## PROMPT 0 — Brand & Design System (set this first / global settings)
+## PROMPT 0 — Brand & Design System (set once in global settings)
 
 > Set up the brand and global theme for this funnel.
 >
-> **Business:** Next Level Restoration Consultant — a "Funding-as-a-Service" partner for
-> restoration & cleaning contractors. We don't lend cash; we supply the equipment, crew,
-> operations and insurance and execute the contractor's job for them. The contractor keeps the
-> client and earns ~25% of the project with $0 upfront.
+> **Business:** Next Level Restoration Consultant — a "Funding-as-a-Service" partner for restoration & cleaning contractors. Founder: Corey Pitts, 30+ years in restoration. We supply the equipment, crews, operations, project management, quality control, and insurance to execute the contractor's job for them — under their brand. The contractor keeps the client, earns ~25% of the project, and invests $0 upfront. Residential and commercial. All work is guaranteed.
 >
-> **Brand colors (use these exact hex values):**
-> - Primary / text / dark sections: charcoal-black `#15171C`
-> - Accent / all primary buttons & highlights: bright red `#E11D26` (hover `#BE141B`)
-> - Background: white `#FFFFFF`; light section background: `#F6F7F9`
-> - Secondary text: `#565C66`; borders: `#E4E7EC`; success green: `#15803D`; star gold: `#F5A623`
+> **Brand colors (exact hex):**
+> - Primary/text/dark sections: charcoal-black `#15171C`
+> - Accent + all primary buttons: bright red `#E11D26` (hover `#BE141B`)
+> - Background: white `#FFFFFF` | light sections: `#F6F7F9`
+> - Red tint/wash: `#FCE9EA` | secondary text: `#565C66` | borders: `#E4E7EC`
+> - Success green: `#15803D` | star/rating gold: `#F5A623`
 >
-> **Fonts:** Headings = "Lexend" (weights 600–800). Body = "Source Sans 3" (weights 400–600).
+> **Fonts:** Headings = "Lexend" (weights 600–800). Body = "Source Sans 3" (400–600).
 >
-> **Logo:** wordmark "NEXT LEVEL" in bold charcoal with "RESTORATION CONSULTANT" in red small-caps
-> underneath, next to a small icon of three ascending bar-chart bars in charcoal with a red rising
-> arrow and red dot at the top (growth / "next level"). Use this in the header and footer.
+> **Logo:** wordmark "NEXT LEVEL" in bold charcoal-black, "RESTORATION CONSULTANT" in red small-caps beneath it, beside three ascending charcoal bar-chart bars with a red rising arrow and red dot at the top. Use in header and footer.
 >
-> **Voice:** confident, direct, blue-collar-respectful, benefit-driven. Speak to contractors who
-> have the work but lack equipment, labor, or cash flow. Position as a partner, never a salesperson.
+> **Voice:** Confident, direct, blue-collar-respectful, benefit-driven. Speaks to contractors who have work but lack equipment, labor, or cash flow. Positions as a long-term partner, never a salesperson.
 >
-> **Style:** bold and high-contrast but professional — large section spacing, rounded buttons
-> (pill-shaped), subtle card shadows, SVG/line icons (never emojis). Fully mobile-responsive.
-> One primary call-to-action per section. Red buttons with white text everywhere.
+> **Style:** Bold, high-contrast, professional. Large section spacing. Pill-shaped buttons. Subtle card shadows. SVG/line icons only — no emojis. Single primary red CTA per section. Fully mobile-responsive.
 
 ---
 
-## PROMPT 1 — Landing / Sales Page
+## PROMPT 1 — Landing / Sales Page (Updated v2)
 
-> Build a long-form, high-converting B2B landing page for **Next Level Restoration Consultant**,
-> a "Funding-as-a-Service" partner for restoration & cleaning contractors.
-> Brand colors: charcoal-black `#15171C`, bright red `#E11D26` (primary buttons), white background,
-> light-gray `#F6F7F9` alternating sections. Headings in "Lexend", body in "Source Sans 3".
-> Logo = "NEXT LEVEL / RESTORATION CONSULTANT" wordmark with a charcoal bar-chart-growth icon and
-> red rising arrow. Use line/SVG icons, pill-shaped red buttons, generous spacing, mobile-first.
-> Every primary button links to the Application page (step 2).
+> Build a long-form, high-converting B2B landing page for **Next Level Restoration Consultant**, a "Funding-as-a-Service" partner for restoration & cleaning contractors. Founder: Corey Pitts, 30+ years in restoration.
 >
-> Build these sections, top to bottom, with this exact copy:
+> Colors: charcoal-black `#15171C`, bright red `#E11D26` (primary buttons), white background, light-gray `#F6F7F9` alternating sections. Headings "Lexend" bold, body "Source Sans 3". Logo = "NEXT LEVEL / RESTORATION CONSULTANT" wordmark with a charcoal bar-chart-growth icon and red rising arrow. Line/SVG icons only, pill-shaped red CTA buttons, generous spacing, mobile-first. Every primary button links to the Application page.
 >
-> **1. Sticky header:** logo at left; nav links "How It Works", "Who It's For", "The Numbers",
-> "FAQ"; a phone number "(000) 000-0000"; and a red button "Apply to Partner". Collapses to a
-> hamburger menu on mobile.
+> Build these sections top to bottom in this exact order, with this exact copy:
 >
-> **2. Hero (dark charcoal background with a subtle red glow):**
-> - Small pill label: "Now partnering with restoration & cleaning contractors" (green status dot).
-> - Headline: "You land the job. We fund, equip & crew it." (highlight "fund, equip & crew" with a
->   red underline/marker effect).
-> - Subhead: "Stop turning away projects because you're short on equipment, labor, or cash flow.
->   Bring us the job — we supply the crew, gear, operations and insurance, and execute it under your
->   name. You stay the face of the client and keep your share. Zero upfront from you."
-> - Primary red button: "See If You Qualify" → Application page. Secondary outline button: "How It Works".
-> - Trust row with checkmarks: "$0 upfront investment", "You keep the client", "Fully insured crews".
-> - To the right: a white "offer card" titled "Funding-as-a-Service" with subtitle "We don't hand
->   you cash — we deliver the job." and a green-check list: "Commercial-grade equipment & supplies",
->   "Trained, insured labor on site", "Operational & logistics support", "Insurance coverage when
->   needed". Footer of the card: big red "25%" next to "your share of the project — with none of your
->   capital at risk".
+> ---
 >
-> **3. Industry strip (light gray):** label "Built for the trades that scale fast" with four
-> icon+text chips: "Water Damage Restoration", "Mold Remediation", "Carpet Cleaning",
-> "Building Cleaning".
+> **SECTION 1 — Sticky header**
+> Logo at left. Nav links: "Why Us", "How It Works", "The Numbers", "About Corey", "FAQ". Phone "(000) 000-0000". Red pill button "See If You Qualify" → Application page. Collapses to hamburger on mobile.
 >
-> **4. Problem section (white):** eyebrow "The contractor's ceiling"; heading "The work is there.
-> The resources aren't."; subtext "You've got the leads and the relationships. But every time a
-> bigger job comes in, the same three walls go up — and you watch the revenue walk out the door."
-> Then three cards (each with a red left accent + icon):
->   - "No cash to float the job" — "Big restoration jobs need thousands in materials and labor before
->     you ever get paid. That upfront cost prices you out."
->   - "No equipment to scale" — "Air movers, extractors, containment, drying systems — the gear that
->     wins commercial work is expensive to buy and store."
->   - "No crew to deliver" — "You can't be on three sites at once. Without a reliable workforce, every
->     job you take is a job you have to turn down somewhere else."
+> ---
 >
-> **5. How It Works (dark charcoal background), anchor id "how":** eyebrow "A partner, not a lender";
-> heading "We become your operations team — for the jobs you can't do alone."; subtext "This isn't a
-> loan and there's no debt. We partner on the project, supply everything it takes to complete it to
-> standard, and split the revenue. Three steps, zero risk on your end." Then a 3-step row with red
-> numbered badges (01, 02, 03):
->   - "You bring the job" — "You found the lead and built the relationship — it stays 100% yours. Send
->     us the scope and we scope the resources needed."
->   - "We fund & execute it" — "We deploy the equipment, the trained crew, the operational support and
->     the insurance, and complete the work to spec — under your brand."
->   - "You stay the face & get paid" — "The client only ever deals with you. The job closes, the
->     revenue splits, and you've earned roughly 25% without touching your own capital."
-> End with a centered red button "Apply to Partner on Your Next Job" → Application page.
+> **SECTION 2 — Hero (dark charcoal `#15171C` background, subtle red radial glow)**
+> Small pill label with green dot: "Now partnering with restoration & cleaning contractors"
 >
-> **6. The Numbers (white), anchor id "numbers":** two-column. Left: eyebrow "Real-world math";
-> heading "A $50,000 job you couldn't have taken — now puts money in your pocket."; text "Instead of
-> referring the job away or losing it entirely, you partner with us. We carry the cost and the labor.
-> You carry the relationship. Everyone wins." Plus a red checklist: "No capital out of your pocket",
-> "No payroll or equipment to manage", "No risk if the job is delayed or complex", "A bigger
-> portfolio to win the next one". Right: an "Example Project" card (water damage restoration) showing
-> rows — "Total project value $50,000", "Upfront cost (we cover it) ~$15,000", "Your capital invested
-> $0" (red), and a highlighted dark footer row "Your earnings (~25%) ≈ $12,500" (green).
+> Headline (large, white, 3 lines):
+> **"Never Turn Down**
+> **Another Restoration**
+> **Job Again."**
 >
-> **7. Stats band (light gray):** four stats — "$0 Upfront cost to you", "~25% Your share of every
-> job", "100% You keep the client & the lead", "4 Restoration trades we serve".
+> Subhead line 1 (slightly larger, light gray):
+> "Keep the client. Keep your brand. Keep your share. **We handle the rest.**" (make "We handle the rest." white and bold)
 >
-> **8. Who It's For (white), anchor id "who":** eyebrow "Is this you?"; heading "Built for
-> contractors ready to grow — without going into debt."; subtext "If you've got the work but not the
-> bandwidth, you're exactly who we partner with." Two large red-icon cards:
->   - "Solo contractors" — "One-person operations handling smaller jobs but ready to scale. You hustle
->     the leads — let us handle the heavy lifting so you can finally say 'yes' to the big ones."
->   - "Small teams & startups" — "New restoration or cleaning businesses with limited resources. Plug
->     into our equipment, crews and operations and compete for jobs that used to be out of reach."
+> Subhead line 2 (body):
+> "You bring the job — we show up with the crews, equipment, funding, operations and insurance to execute it under your name. Residential and commercial. $0 upfront from you. Your customer never knows we were involved."
 >
-> **9. Testimonials (light gray):** eyebrow "From the field"; heading "Contractors who stopped
-> leaving money on the table." Three 5-star review cards:
->   - Marcus R., "Solo contractor · Carpet & water": "I'd been turning down water-damage calls for two
->     years because I couldn't staff them. Now I take the call, hand off the scope, and still walk away
->     with a check. Game changer."
->   - Denise L., "Owner · Restoration startup": "We're a three-person shop. Partnering on the big jobs
->     let us build a portfolio that lands even bigger ones. We didn't spend a dollar on equipment to do it."
->   - Jerome T., "Mold remediation contractor": "The part that sold me: my customer never knew anything
->     changed. Same point of contact — me. The crew showed up professional and insured. I'll keep
->     sending jobs."
->   Add small disclaimer text: "Illustrative examples of the partnership model."
+> Two buttons: Red "See If Your Next Job Qualifies" → Application page. Outline "How It Works" → #how anchor.
 >
-> **10. Why partner with us (white):** eyebrow "Why partner with us"; heading "More than resources —
-> a long-term growth partner." Four small icon cards: "Fully insured" ("Insurance coverage on the
-> work when the job calls for it, so you're protected."), "Fast mobilization" ("Equipment and crews
-> ready to deploy so restoration timelines don't slip."), "You keep control" ("The lead, the client
-> and your brand stay yours — always. We work behind you."), "Expert guidance" ("Tap operational
-> know-how and consulting that helps you bid and win smarter.").
+> Trust row with white checkmarks: "$0 upfront from you" | "You keep the client" | "30+ years behind every job"
 >
-> **11. FAQ (light gray), anchor id "faq":** eyebrow "Questions, answered"; heading "What contractors
-> ask before partnering." Accordion with these Q&As:
->   - "Is this a loan? Will I owe money?" — "No. There's no loan, no debt, and no repayment. This is
->     'Funding-as-a-Service' — we invest the equipment, labor and operations into your job and earn our
->     share only when the project is completed and paid. If the job doesn't happen, you owe nothing."
->   - "Do I lose my customer or my lead?" — "Never. The lead is yours and stays yours. You remain the
->     face of the client and the only point of contact. We operate behind the scenes under your brand."
->   - "How much do I actually earn?" — "You earn roughly 25% of the project value with zero capital
->     invested. On a $50,000 job, that's about $12,500. Exact splits are confirmed per project on your
->     strategy call."
->   - "Which industries do you work with?" — "Restoration and cleaning trades: water damage
->     restoration, mold remediation, carpet cleaning, and building/commercial cleaning."
->   - "What do I need to qualify?" — "An active lead or project in one of the trades above. You don't
->     need equipment, a crew, or cash — that's what we bring. Apply in under two minutes and book a free
->     strategy call."
+> To the right: white "offer card" box titled "Funding-as-a-Service" subtitle "We don't hand you cash — we deliver the job." with a green-check list:
+> - Commercial-grade equipment & supplies
+> - Trained, insured & supervised crews
+> - Full project management & quality control
+> - Residential & commercial — all work guaranteed
 >
-> **12. Final CTA band (solid red background):** eyebrow "Your next job is waiting"; heading "Stop
-> turning away revenue. Start partnering."; text "Apply in under two minutes. If you're a fit, you'll
-> book a free strategy call and we'll map out how to fund and execute your next project together." A
-> white button "Apply to Partner Now" → Application page. Below it: "No cost to apply · No obligation
-> · 2-minute application".
+> Card footer: big red "25%" next to "your share of the project — with none of your capital at risk"
 >
-> **13. Footer (dark charcoal):** logo + tagline "Funding-as-a-Service for restoration & cleaning
-> contractors. You bring the job — we bring everything it takes to complete it." Columns: Company
-> (How It Works, Who It's For, The Numbers, FAQ); Get Started (Apply to Partner, phone, email
-> hello@nextlevelrc.com). Bottom: copyright, Privacy, Terms, and a small disclaimer: "This is a
-> business partnership offer for contractors, not a lending or cash-advance product. Revenue shares,
-> costs and coverage are illustrative and confirmed per project. Partnership is subject to
-> qualification and approval."
+> ---
+>
+> **SECTION 3 — Credibility strip (white background, anchor: "credibility")**
+> Eyebrow: "Why contractors trust Next Level"
+>
+> A bold 4-column red banner/card showing:
+> - **30+** / Years in the Restoration Industry
+> - **$XX M+** / In Restoration Revenue Managed  *(leave as placeholder — client to fill in)*
+> - **XX+** / States Served Including Catastrophe Response  *(placeholder)*
+> - **XX+** / Large-Loss Projects Completed  *(placeholder)*
+>
+> Below banner in small text: "Residential · Commercial · Catastrophe Response · National Experience"
+>
+> ---
+>
+> **SECTION 4 — Industry strip (light gray `#F6F7F9`)**
+> Label: "Trades we partner on — residential & commercial"
+> Five icon+text chips: "Water Damage Restoration" | "Mold Remediation" | "Carpet Cleaning" | "Building Cleaning" | "Catastrophe Response"
+>
+> ---
+>
+> **SECTION 5 — Problem (white)**
+> Eyebrow: "The contractor's ceiling"
+> Heading: "The work is there. The resources aren't."
+> Subtext: "You've got the leads and the relationships. But every time a bigger job comes in, the same three walls go up — and you watch the revenue walk out the door."
+>
+> Three red-left-border cards with icons:
+> - **"No cash to float the job"** — "Big restoration jobs need thousands in materials and labor before you ever get paid. That upfront cost prices you out every time."
+> - **"No equipment to scale"** — "Air movers, extractors, containment, drying systems — the gear that wins commercial work is expensive to buy and store."
+> - **"No crew to deliver"** — "You can't be on three sites at once. Without a reliable workforce, every job you take is a job you have to turn down somewhere else."
+>
+> ---
+>
+> **SECTION 6 — How It Works (dark charcoal `#15171C` background, anchor: "how")**
+> Eyebrow: "A partner, not a lender"
+> Heading: "We become your operations team — for the jobs you can't do alone."
+> Subtext: "This isn't a loan and there's no debt. We partner on the project, supply everything it takes to complete it to standard, and split the revenue. We manage the project from start to finish and guarantee the work."
+>
+> **Visual process flow (5 steps in a horizontal row with connecting line/arrows between them):**
+> 1. Contractor Finds Job
+> 2. Next Level Reviews Scope
+> 3. Crew & Equipment Deployed  *(highlight this node in red)*
+> 4. Job Completed & Guaranteed
+> 5. Revenue Shared  *(highlight this node in red)*
+>
+> **Below that, 3 numbered step cards (red 01/02/03 badges):**
+> - **"You bring the job"** — "You found the lead and built the relationship — it stays 100% yours. Send us the scope and we assess what resources are needed. Residential or commercial, any size."
+> - **"We fund, deploy & manage"** — "We handle everything: equipment, trained crews, project management, quality control and insurance — all executed to spec under your brand. We supervise every stage so nothing falls through."
+> - **"You stay the face & get paid"** — "Your customer only ever deals with you. The job closes, the revenue splits — roughly 25% in your pocket without touching your own capital. And the work is guaranteed."
+>
+> Centered red button: "See If Your Next Job Qualifies" → Application page.
+>
+> ---
+>
+> **SECTION 7 — Testimonials (light gray — placed HERE, right after How It Works)**
+> Eyebrow: "From the field"
+> Heading: "Contractors who stopped leaving money on the table"
+>
+> Three 5-star quote cards:
+> - **Marcus R.**, "Solo contractor · Carpet & water" — "I'd been turning down water-damage calls for two years because I couldn't staff them. Now I take the call, hand off the scope, and still walk away with a check. Game changer."
+> - **Denise L.**, "Owner · Restoration startup" — "We're a three-person shop. Partnering on the big jobs let us build a portfolio that lands even bigger ones. We didn't spend a dollar on equipment to do it."
+> - **Jerome T.**, "Mold remediation contractor" — "The part that sold me: my customer never knew anything changed. Same point of contact — me. The crew showed up professional and insured. I'll keep sending jobs."
+>
+> Small disclaimer text beneath: "Illustrative examples of the partnership model. Names and details represent typical contractor scenarios."
+>
+> ---
+>
+> **SECTION 8 — The Numbers (white, anchor: "numbers")**
+> Two-column layout.
+>
+> Left column:
+> Eyebrow: "Real-world math"
+> Heading: "A $50,000 job you couldn't have taken — now puts money in your pocket."
+> Text: "Instead of referring the job away or losing it entirely, you partner with us. We carry the cost, the crew and the execution. You carry the relationship. Everyone wins."
+>
+> Red checkmark list:
+> - No capital out of your pocket
+> - No payroll or equipment to manage
+> - Project managed & supervised from start to finish
+> - All work is guaranteed — we make it right at our cost
+> - A bigger portfolio to win the next one
+>
+> Right column — "Example Project" card (Water damage restoration):
+> Rows: "Total project value — $50,000" | "Upfront cost (we cover it) — ~$15,000" | "Your capital invested — $0" (show $0 in red)
+> Dark highlighted footer row: "Your earnings (~25%) — ≈ $12,500" (earnings in green)
+>
+> ---
+>
+> **SECTION 9 — Job Size Table (light gray)**
+> Eyebrow: "What we partner on"
+> Heading: "See exactly what size jobs we can help you take on."
+> Subtext: "Residential and commercial. If you've got the lead, we've got the resources."
+>
+> A professional table with columns: Job Type | Project Size Range | Residential | Commercial
+>
+> Rows:
+> | Water Damage Restoration | $5k – $500k+ | ✓ | ✓ |
+> | Mold Remediation | $5k – $250k+ | ✓ | ✓ |
+> | Carpet & Floor Cleaning | $2k – $100k+ | ✓ | ✓ |
+> | Building / Commercial Cleaning | $10k – $500k+ | ✓ | ✓ |
+> | Catastrophe Response | Custom | ✓ | ✓ |
+>
+> Table footer note: "Not sure if your job qualifies? Apply anyway — we'll let you know on your strategy call. We review every project scope individually."
+>
+> ---
+>
+> **SECTION 10 — Stats band (dark charcoal `#15171C` background)**
+> Four large red-number stats:
+> - **30+** / Years Industry Experience
+> - **$0** / Upfront cost to you
+> - **~25%** / Your share of every project
+> - **100%** / Work guaranteed — at our cost
+>
+> ---
+>
+> **SECTION 11 — Corey Pitts Story (white, anchor: "corey")**
+> Two-column layout. Left = photo. Right = story.
+>
+> Left: Corey Pitts professional photo (portrait, 4:5 ratio). Below/overlapping: a small dark badge showing "30+" and "Years in the restoration industry". *(Note: use a professional headshot placeholder if no photo provided yet.)*
+>
+> Right column:
+> Eyebrow: "The person behind your next job"
+> Heading: "Meet Corey Pitts"
+> Red subheading: "Founder, Next Level Restoration Consultant"
+>
+> Body paragraphs:
+> "Corey started with a carpet cleaning business and built restoration operations serving residential, commercial, and catastrophe projects nationwide. Over 30+ years he has managed large-loss projects, led crews across multiple states, and developed the systems that let contractors execute bigger work without the overhead that kills their margins."
+>
+> "Today, Next Level exists for one reason: to help contractors like you grow faster by providing the crews, equipment, systems and operational support needed to take on larger projects — without debt, without payroll headaches, and without losing the client relationships you've spent years building."
+>
+> Bold closing line: "When a contractor partners with Next Level, they're not just getting resources. They're getting 30+ years of restoration experience standing behind every job."
+>
+> Red checkmark list:
+> - Built and scaled restoration operations from the ground up
+> - National catastrophe response and large-loss experience
+> - Residential & commercial expertise across multiple trades
+> - Committed to your brand, your client, and your reputation
+>
+> ---
+>
+> **SECTION 12 — Who It's For (light gray, anchor: "who")**
+> Eyebrow: "Is this you?"
+> Heading: "Built for contractors ready to grow — without going into debt."
+> Subtext: "If you've got the work but not the bandwidth, you're exactly who we partner with."
+>
+> Two large red-icon cards:
+> - **"Solo contractors"** — "One-person operations handling smaller jobs but ready to scale. You hustle the leads — let us handle the heavy lifting so you can finally say 'yes' to the big residential and commercial jobs."
+> - **"Small teams & startups"** — "New restoration or cleaning businesses with limited resources. Plug into our equipment, crews, and 30+ years of operational know-how to compete for jobs that used to be completely out of reach."
+>
+> ---
+>
+> **SECTION 13 — Why Partner With Us (white)**
+> Eyebrow: "Why partner with us"
+> Heading: "More than resources — a long-term growth partner."
+>
+> Four icon cards:
+> - **"All work guaranteed"** — "Every job is completed to spec and we stand behind it. If something isn't right, we make it right — at our cost, not yours."
+> - **"Supervised crews"** — "Every crew is trained, insured, and supervised by our team to restoration standards. Quality control on every stage."
+> - **"You keep control"** — "The lead, the client and your brand stay yours — always. We work entirely behind you. Your customer never knows we were involved."
+> - **"Expert guidance"** — "30+ years of restoration expertise behind every call. We help you scope, bid, and execute smarter — not just once, but long-term."
+>
+> ---
+>
+> **SECTION 14 — FAQ (light gray, anchor: "faq")**
+> Eyebrow: "Questions, answered"
+> Heading: "What contractors ask before partnering"
+>
+> Accordion — these exact Q&As in this exact order:
+>
+> **Q1: "Is this a loan? Will I owe money?"**
+> A: "No. There's no loan, no debt, and no repayment. This is 'Funding-as-a-Service' — we invest the equipment, labor and operations into your job and earn our share only when the project is completed and paid. If the job doesn't happen, you owe nothing."
+>
+> **Q2: "It's my name on the job — what if the crew does bad work?"** *(this is the most important silent objection — make this question prominent)*
+> A: "Your reputation is the whole point of this partnership, so we protect it like it's ours. Every crew we deploy is trained, insured, and supervised to restoration standards, and the work is completed to spec before the job closes. If something isn't right, we make it right — at our cost, not yours. You stay the client's point of contact the entire time, so you're never blindsided and you always know the status of the job. We don't get paid unless the job is done right."
+>
+> **Q3: "Do I lose my customer or my lead?"**
+> A: "Never. The lead is yours and stays yours. You remain the face of the client and the only point of contact. We operate behind the scenes under your brand so your relationship is fully protected — your customer only ever knows you."
+>
+> **Q4: "How much do I actually earn?"**
+> A: "You earn roughly 25% of the project value with zero capital invested. On a $50,000 job, that's about $12,500 in your pocket for bringing the work and staying the face of the client. Exact splits are confirmed per project scope on your strategy call."
+>
+> **Q5: "Do you handle residential and commercial jobs?"**
+> A: "Yes — both. We partner on residential and commercial projects across water damage restoration, mold remediation, carpet cleaning, building cleaning, and catastrophe response. Project sizes range from $2k residential cleans all the way to $500k+ commercial large-loss jobs."
+>
+> **Q6: "Which industries do you work with?"**
+> A: "We specialize in restoration and cleaning trades: water damage restoration, mold remediation, carpet cleaning, building/commercial cleaning, and catastrophe response. If your work is adjacent, apply and we'll let you know if it's a fit on your call."
+>
+> **Q7: "What do I need to qualify?"**
+> A: "An active lead or project in one of the trades above. You don't need equipment, a crew, or cash — that's what we bring. Apply in under two minutes and book a free strategy call. We only partner with a limited number of contractors per market, so spaces are limited."
+>
+> ---
+>
+> **SECTION 15 — Final CTA band (solid red `#E11D26` background)**
+> Eyebrow (white): "Your next job is waiting"
+> Heading (white): "Stop turning away revenue. Start partnering."
+> Text: "Apply in under two minutes. If you're a fit, you'll book a free strategy call with Corey and map out exactly how we fund and execute your next project together."
+>
+> White button "See If Your Next Job Qualifies" → Application page.
+>
+> Trust row in white: "No cost to apply · No obligation · 2-minute application"
+>
+> Below the CTA band — a separate **urgency notice box** with red background wash and red border:
+> (icon: clock or info) **"Limited partnerships per market."** "To maintain response times and quality standards, we only take on a select number of contractor partners per area. Apply today to see if your market is still available."
+>
+> ---
+>
+> **SECTION 16 — Footer (dark charcoal `#15171C`)**
+> Logo + tagline: "Funding-as-a-Service for restoration & cleaning contractors. You bring the job — we bring 30+ years of expertise and everything it takes to complete it."
+>
+> Three columns: **Company** (Why Us, How It Works, The Numbers, About Corey, FAQ) | **Get Started** (See If You Qualify, phone, hello@nextlevelrc.com) | *(leave third column for social links or leave blank)*
+>
+> Bottom row: Copyright, Privacy, Terms.
+>
+> Disclaimer in small text: "This is a business partnership offer for contractors, not a lending or cash-advance product. Revenue shares, costs and coverage are illustrative and confirmed per project. All work performed through the partnership is supervised, insured and guaranteed. Partnership is subject to qualification and approval."
 
 **Refine after generating:**
-- "Make every primary button bright red `#E11D26` with white text and pill-shaped corners."
-- "Make the Hero and How-It-Works section backgrounds dark charcoal `#15171C` with white text."
-- "Point all 'Apply'/'Qualify' buttons to the Application page."
-- "Use line icons, not emojis. Increase spacing between sections."
+- "Make every primary CTA button bright red `#E11D26` with white text, pill-shaped (fully rounded corners)."
+- "Set the Hero section and How It Works section background to dark charcoal `#15171C` with white text."
+- "Put the Testimonials section directly after the How It Works section — before The Numbers."
+- "Make the Credibility strip (30+ years section) a bold full-width red `#E11D26` banner with white text."
+- "The FAQ Q2 about crew quality is the most important objection — make sure it is the second item in the accordion."
+- "Add the urgency notice box below the final CTA — 'Limited partnerships per market.'"
+- "Point all 'Apply / Qualify' buttons to the Application page."
+- "Use only SVG line icons — no emojis anywhere."
 
 ---
 
 ## PROMPT 2 — Application Page (multi-step qualification form)
 
-> Build an **Application / qualification page** for Next Level Restoration Consultant. Same brand:
-> charcoal-black `#15171C`, bright red `#E11D26` buttons, white background, "Lexend" headings,
-> "Source Sans 3" body, logo top-left. Keep it distraction-free (minimal header, no nav).
-> Layout: two columns on desktop — the **form on the left**, a **dark charcoal trust sidebar on the
-> right**; single column on mobile.
+> Build an **Application / qualification page** for Next Level Restoration Consultant. Same brand: charcoal-black `#15171C`, bright red `#E11D26` buttons, white background, "Lexend" headings, "Source Sans 3" body, logo top-left. Distraction-free — minimal header only, no navigation menu.
 >
-> **Header:** logo at left; a small "← Back to site" link at right (→ Landing page).
+> **Layout:** Two columns on desktop — **form on the left**, **dark charcoal `#15171C` trust sidebar on the right**. Single column on mobile (form first, sidebar below).
 >
-> **Form (left column) — a multi-step form with a progress bar at the top** that shows "Step X of 4"
-> and fills a red progress bar as the user advances. Use large clickable "choice cards" (with icons)
-> that auto-advance to the next step when selected. Steps:
+> **Header:** Logo left. Small "← Back to site" link right → Landing page.
 >
-> - **Step 1 — "What trade are you in?"** subtext "This helps us match the right equipment and crews
->   to your jobs." Single-choice cards: "Water Damage Restoration" (Floods, leaks, drying &
->   extraction), "Mold Remediation" (Inspection, containment & removal), "Carpet & Floor Cleaning"
->   (Deep clean, steam & restoration), "Building / Commercial Cleaning" (Large facilities &
->   post-construction), "Another restoration trade" (Tell us on your call). Field name: `industry`.
+> **Form (left column):**
+> A multi-step form with a red progress bar at the top showing "Step X of 4" label and a filled red bar.
+> Use large, clickable "choice cards" with icons that auto-advance to the next step on selection.
 >
-> - **Step 2 — "How's your operation set up today?"** subtext "No wrong answer — we partner with
->   solos and small teams alike." Two choice cards: "Solo contractor" (It's mostly just me),
->   "Small team / startup" (A few of us). Field name: `size`. Include a "Back" link.
+> - **Step 1 — "What trade are you in?"**
+>   Subtext: "This helps us match the right equipment and crews to your jobs."
+>   Choice cards: "Water Damage Restoration" (Floods, leaks, drying & extraction) | "Mold Remediation" (Inspection, containment & removal) | "Carpet & Floor Cleaning" (Deep clean, steam & restoration) | "Building / Commercial Cleaning" (Large facilities & post-construction) | "Another restoration trade" (Tell us on your call)
+>   Field name: `industry`
 >
-> - **Step 3 — "What's holding you back the most right now?"** subtext "So we lead with what matters
->   on your strategy call." Choice cards: "Cash flow to fund jobs" (Can't float upfront costs),
->   "Equipment & supplies" (Don't own the gear), "Labor / crew" (Not enough hands), "All of the above"
->   (I need a full partner). Field name: `bottleneck`. Include a "Back" link.
+> - **Step 2 — "How's your operation set up today?"**
+>   Subtext: "No wrong answer — we partner with solos and small teams alike."
+>   Two cards: "Solo contractor" (It's mostly just me) | "Small team / startup" (A few of us)
+>   Field name: `size` | Include "← Back" link.
 >
-> - **Step 4 — "Where should we send your next steps?"** subtext "You'll book your free strategy call
->   on the next screen." Text fields: First name (required), Last name (required), Business name
->   (optional — "leave blank if you're solo"), Email (required, email type), Mobile phone (required,
->   tel type, helper "We'll text your call confirmation here"). Submit button (full-width red):
->   "Continue to Book My Call". Below it: "🔒 Your information is private. No spam, ever." Include a
->   "Back" link. Field names: `firstName`, `lastName`, `business`, `email`, `phone`.
+> - **Step 3 — "What's holding you back the most right now?"**
+>   Subtext: "So we lead with what matters on your strategy call."
+>   Cards: "Cash flow to fund jobs" (Can't float upfront costs) | "Equipment & supplies" (Don't own the gear) | "Labor / crew" (Not enough hands) | "All of the above" (I need a full partner)
+>   Field name: `bottleneck` | Include "← Back" link.
 >
-> **On submit:** save the lead to the CRM and redirect to the **Booking page** (step 3).
+> - **Step 4 — "Where should we send your next steps?"**
+>   Subtext: "You'll book your free strategy call on the next screen."
+>   Fields: First name (required) | Last name (required) | Business name (optional — label it "leave blank if you're solo") | Email (required, email keyboard) | Mobile phone (required, phone keyboard, helper text "We'll text your call confirmation here")
+>   Full-width red submit button: "Continue to Book My Call →"
+>   Below button: "🔒 Your information is private. No spam, ever."
+>   Field names: `firstName`, `lastName`, `business`, `email`, `phone`
+>   Include "← Back" link.
 >
-> **Trust sidebar (right column, dark charcoal):** logo at top; heading "Partner on your next job —
-> with none of your own capital." A 3-item benefit list with icons: "$0 upfront — We fund the
-> equipment, crew & operations.", "You keep the client — Your lead, your brand, your relationship.",
-> "~25% of every job — About $12,500 on a $50k project." Below, a testimonial: "I take the call, hand
-> off the scope, and still walk away with a check. Game changer." — Marcus R., solo contractor.
+> **On submit:** Save contact to CRM and redirect to the **Booking page**.
+>
+> **Trust sidebar (right column, dark charcoal `#15171C` background, white text):**
+> Logo at top.
+> Heading: "Partner on your next job — with none of your own capital."
+>
+> Icon benefit list:
+> - "$0 upfront — We fund the equipment, crew & operations."
+> - "You keep the client — Your lead, your brand, your relationship."
+> - "~25% of every job — About $12,500 on a $50k project."
+> - "All work guaranteed — We make it right at our cost if anything's off."
+>
+> Testimonial quote box:
+> "I take the call, hand off the scope, and still walk away with a check. Game changer."
+> — Marcus R., solo contractor
 
 **Refine after generating:**
-- "Make it a true multi-step form with a red progress bar, not one long form."
-- "Make the answer options large clickable cards that auto-advance, with a red highlight when selected."
-- "Set the submit action to create/update the contact and redirect to the Booking page."
-- "Keep the right sidebar dark charcoal `#15171C` with white text; hide it below the form on mobile."
+- "Make it a true multi-step form with a red progress bar, not one long scrolling form."
+- "Answer options must be large clickable cards with icons that auto-advance to the next step. Highlight the selected card with a red border."
+- "Set the submit action to create/update the contact in the CRM and redirect to the Booking page."
+- "Right sidebar stays dark charcoal `#15171C` with white text. On mobile, hide sidebar or show it below the form."
 
 ---
 
 ## PROMPT 3 — Booking / Calendar Page
 
-> Build a **calendar booking page** for Next Level Restoration Consultant. Same brand: charcoal-black
-> `#15171C`, bright red `#E11D26`, white background, "Lexend" headings, "Source Sans 3" body, minimal
-> header with logo. Centered single-column layout.
+> Build a **calendar booking page** for Next Level Restoration Consultant. Same brand: charcoal-black `#15171C`, bright red `#E11D26`, white background, "Lexend" headings, "Source Sans 3" body, minimal header with logo. Centered single-column layout. Clean, focused — no nav, no distractions.
 >
-> **Header:** logo at left; a non-clickable label at right "Step 2 of 2 · Book your call".
+> **Header:** Logo at left. Non-clickable label at right: "Step 2 of 2 · Book your call"
 >
-> **Content:**
-> - A thin progress bar near the top that's ~85% filled, with labels "Application received" (left)
->   and "Last step" (right, in red).
-> - Eyebrow: "You're approved to book".
-> - Headline: "Pick a time for your free strategy call".
-> - Subtext: "On this 15–20 minute call we'll map a real job you can partner on, confirm your revenue
->   split, and show you exactly how we fund and execute it. No cost, no obligation."
-> - A trust row with green checkmarks: "15–20 minutes", "Zero pressure", "Map your first job".
-> - **Embed the GoHighLevel calendar widget here** (full width, in a white rounded card with a subtle
->   shadow). Use my booking calendar.
+> **Page content:**
+> - A thin progress bar near the top, approximately 85% filled in red. Labels: "Application received" (left) and "Last step" in red (right).
+> - Eyebrow: "You're approved to book"
+> - Headline: "Pick a time for your free strategy call"
+> - Subtext: "On this 15–20 minute call with Corey, we'll map a real job you can partner on, confirm your revenue split, and show you exactly how we fund and execute it. No cost, no obligation."
+> - Trust row with green checkmarks: "15–20 minutes" | "Zero pressure" | "Map your first job"
+> - **Embed my GoHighLevel calendar widget here** — full width, inside a white rounded card with a subtle shadow. This is where leads pick their call time.
 >
-> **After a booking is confirmed, redirect to the Thank You page (step 4).**
+> **After a booking is confirmed, redirect to the Thank You page.**
 
 **Refine after generating:**
-- "Insert my GHL calendar booking widget in the main card."
-- "Set the calendar's post-booking redirect/confirmation URL to the Thank You page."
-- "Keep all accent elements (progress bar, checkmarks, buttons) in brand red `#E11D26`."
+- "Insert my GHL calendar booking widget in the main white card."
+- "Set the calendar's post-booking confirmation redirect to the Thank You page."
+- "All accents (progress bar, eyebrow line, checkmarks) must be brand red `#E11D26`."
+- "No navigation menu — keep the page focused only on booking."
 
 ---
 
 ## PROMPT 4 — Thank You / Confirmation Page
 
-> Build a **booking confirmation / thank-you page** for Next Level Restoration Consultant. Same brand:
-> charcoal-black `#15171C`, bright red `#E11D26`, white background, "Lexend" headings, "Source Sans 3"
-> body, minimal header with logo. Centered single-column layout.
+> Build a **booking confirmation / thank-you page** for Next Level Restoration Consultant. Same brand: charcoal-black `#15171C`, bright red `#E11D26`, white background, "Lexend" headings, "Source Sans 3" body. Minimal header with logo. Centered single-column layout.
 >
-> **Header:** logo at left; an outline button "Return Home" at right (→ Landing page).
+> **Header:** Logo at left. Outline button "Return Home" at right → Landing page.
 >
-> **Content:**
-> - A large green success circle with a white checkmark at the top.
-> - Eyebrow: "Your call is confirmed".
+> **Page content:**
+> - A large green circle with a white checkmark at the top (animated pop-in on load).
+> - Eyebrow: "Your call is confirmed"
 > - Headline: "You're booked — let's build your next job together."
-> - Subtext: "Check your email and texts for the confirmation and calendar invite. Add it now so
->   nothing slips — this call is where we turn a job you couldn't take into revenue in your pocket."
-> - Three numbered "next step" cards (1, 2, 3):
->   1. "Watch your inbox" — "Your confirmation and calendar invite are on the way. Add it to your
->      calendar so you don't miss it."
->   2. "Have a job in mind" — "Think of a current or recent lead you couldn't fully take on. We'll use
->      it as a live example on the call."
->   3. "Show up ready" — "We'll confirm your revenue split and map exactly how we fund, equip and
->      execute your first partnership job."
-> - Two buttons: a dark "Add to Calendar" button and an outline "Back to Home" button (→ Landing page).
-> - A reassurance card: "Need to reschedule or have a quick question?" — "Reply to your confirmation
->   email, or reach us at hello@nextlevelrc.com / (000) 000-0000."
-> - Small closing line: "No cost. No obligation. Just a clear plan for your next job."
+> - Subtext: "Check your email and texts for the confirmation and calendar invite. Add it now so nothing slips — this call is where we turn a job you couldn't take into revenue in your pocket."
+>
+> Three numbered cards (dark numbered badges 1, 2, 3):
+> 1. **"Watch your inbox"** — "Your confirmation and calendar invite are on the way. Add it to your calendar so you don't miss it."
+> 2. **"Have a job in mind"** — "Think of a current or recent lead you couldn't fully take on. We'll use it as a live example on the call."
+> 3. **"Show up ready"** — "We'll confirm your revenue split and map exactly how we fund, equip and execute your first partnership job."
+>
+> Two buttons: Dark "Add to Calendar" button (calendar icon) | Outline "Back to Home" → Landing page.
+>
+> A reassurance card below buttons:
+> "Need to reschedule or have a quick question?"
+> "Reply to your confirmation email, or reach us at hello@nextlevelrc.com / (000) 000-0000."
+>
+> Closing line in small text: "No cost. No obligation. Just a clear plan for your next job."
 
 **Refine after generating:**
-- "Make the success checkmark circle green; keep buttons and accents in brand red `#E11D26`."
-- "Point 'Return Home' / 'Back to Home' to the Landing page."
+- "The success checkmark circle must be green `#15803D`. Keep buttons and accent elements in brand red `#E11D26`."
+- "Point 'Return Home' and 'Back to Home' to the Landing page."
+- "No navigation menu on this page."
 
 ---
 
-## Post-build checklist (do this once all 4 pages exist)
+## Post-build checklist (do this after all 4 pages are live)
 
-1. **Wire the funnel order:** Landing → Application → Booking → Thank You (set each page's button/
-   redirect targets as noted in the prompts).
-2. **Connect the calendar** on the Booking page and set its confirmation redirect to Thank You.
-3. **Map the form fields** (`industry`, `size`, `bottleneck`, `firstName`, `lastName`, `business`,
-   `email`, `phone`) to contact fields / custom fields in GHL; add an automation (email + SMS
-   confirmation) on submission and on booking.
-4. **Replace placeholders:** real phone number, real email, Privacy/Terms links, and swap the
-   illustrative testimonials for real ones when available.
-5. **Connect a real domain** (this fixes the "not connected to proper domain" issue from the notes).
-6. **Mobile QA:** check every page at phone width — single column, tap targets large, no cut-off text.
+1. **Wire the funnel order:** Landing → Application → Booking → Thank You. Check every button/redirect.
+2. **Connect your calendar** on the Booking page. Set its post-booking confirmation redirect to the Thank You page.
+3. **Map form fields** to CRM contact fields: `industry`, `size`, `bottleneck`, `firstName`, `lastName`, `business`, `email`, `phone`.
+4. **Set up automations:** email + SMS confirmation on form submit; email + SMS reminder on booking.
+5. **Fill in the placeholder numbers** in the Credibility strip ($XX M+, XX+ states, XX+ projects) with your real figures.
+6. **Add Corey's professional photo** in Section 11 (the story section).
+7. **Replace placeholder testimonials** with real contractor quotes when available.
+8. **Replace placeholders:** real phone number, real email address, Privacy/Terms links.
+9. **Connect your real domain** — this fixes the "not connected to proper domain" issue from the audit.
+10. **Mobile QA every page** — single column, tap targets large (44pt min), no text cut off, no horizontal scroll.

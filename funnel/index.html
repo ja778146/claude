@@ -3,15 +3,90 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Take On Bigger Restoration Jobs — Without the Equipment, Crew or Cash | Next Level Restoration Consultant</title>
-<meta name="description" content="You bring the job. We bring the equipment, the crew, the insurance and the cash flow — and execute it for you. You stay the face of the client and keep your cut. Apply to partner.">
-<meta property="og:title" content="You Land the Job. We Fund, Equip & Crew It.">
-<meta property="og:description" content="Funding-as-a-Service for restoration & cleaning contractors. Take on $50k+ jobs with $0 upfront. Apply to partner today.">
+<title>Never Turn Down Another Restoration Job Again | Next Level Restoration Consultant</title>
+<meta name="description" content="You bring the job — we bring the crews, equipment, funding and execution. Keep the client, keep your brand, keep your share. Apply to partner with Next Level Restoration Consultant.">
+<meta property="og:title" content="Never Turn Down Another Restoration Job Again">
+<meta property="og:description" content="Keep the client. Keep your brand. Keep your share. We handle the rest. Partner with 30+ years of restoration expertise behind you.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <script>document.documentElement.classList.add("js")</script>
 <link rel="stylesheet" href="assets/styles.css">
+<style>
+/* ---- Page-specific additions ---- */
+.cred { display:grid; grid-template-columns:repeat(4,1fr); gap:0; background:var(--red); border-radius:var(--radius-lg); overflow:hidden; }
+.cred__item { padding:28px 22px; text-align:center; border-right:1px solid rgba(255,255,255,.18); }
+.cred__item:last-child { border-right:none; }
+.cred__num { font-family:'Lexend',sans-serif; font-weight:800; font-size:clamp(1.7rem,3vw,2.4rem); color:#fff; line-height:1; }
+.cred__lbl { color:rgba(255,255,255,.88); font-size:.92rem; margin-top:6px; line-height:1.3; }
+
+.story { display:grid; grid-template-columns:.9fr 1.1fr; gap:60px; align-items:center; }
+.story__photo { position:relative; }
+.story__img-wrap { border-radius:var(--radius-lg); overflow:hidden; aspect-ratio:4/5; background:var(--surface-2); display:flex; align-items:center; justify-content:center; }
+.story__img-placeholder { width:100%; height:100%; min-height:400px; background:linear-gradient(160deg,#e8eaed,#d3d8df); display:grid; place-items:center; }
+.story__img-placeholder svg { width:80px; height:80px; color:#b0b6be; }
+.story__badge { position:absolute; bottom:-18px; left:24px; background:var(--ink); color:#fff; border-radius:var(--radius); padding:16px 20px; box-shadow:var(--shadow-lg); min-width:180px; }
+.story__badge .s { font-family:'Lexend',sans-serif; font-weight:800; font-size:1.5rem; color:var(--red); }
+.story__badge .l { font-size:.88rem; color:#B9BFC9; margin-top:2px; }
+.story__body .eyebrow { margin-bottom:12px; }
+.story__body h2 { margin-bottom:6px; }
+.story__founder { font-family:'Lexend',sans-serif; font-weight:700; color:var(--red); font-size:1.05rem; margin-bottom:18px; }
+.story__body p { font-size:1.06rem; }
+.story__points { list-style:none; padding:0; display:grid; gap:11px; margin-top:20px; }
+.story__points li { display:flex; gap:11px; align-items:flex-start; font-size:1.02rem; color:var(--ink); font-weight:500; }
+.story__points li svg { width:22px; height:22px; color:var(--red); flex:0 0 auto; margin-top:1px; }
+
+/* Job size table */
+.job-table { width:100%; border-collapse:collapse; }
+.job-table thead th { background:var(--ink); color:#fff; font-family:'Lexend',sans-serif; font-weight:700; font-size:.95rem; padding:16px 22px; text-align:left; }
+.job-table thead th:first-child { border-radius:12px 0 0 0; }
+.job-table thead th:last-child { border-radius:0 12px 0 0; }
+.job-table tbody tr { border-bottom:1px solid var(--border); transition:background .15s; }
+.job-table tbody tr:hover { background:var(--red-tint); }
+.job-table tbody td { padding:16px 22px; font-size:1.02rem; color:var(--ink); }
+.job-table tbody td:first-child { font-family:'Lexend',sans-serif; font-weight:700; }
+.job-table tbody td .range { font-family:'Lexend',sans-serif; font-weight:700; color:var(--success); }
+.job-table tbody td .note { font-size:.86rem; color:var(--muted); margin-top:3px; }
+.job-table tfoot td { padding:14px 22px; background:var(--surface); font-size:.9rem; color:var(--muted); border-radius:0 0 12px 12px; }
+.table-wrap { background:#fff; border:1px solid var(--border); border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow); }
+
+/* Process flow */
+.flow { display:grid; grid-template-columns:repeat(5,1fr); gap:0; position:relative; }
+.flow::before { content:""; position:absolute; top:34px; left:10%; right:10%; height:2px; background:linear-gradient(90deg,var(--red),rgba(225,29,38,.3)); z-index:0; }
+.flow__step { display:flex; flex-direction:column; align-items:center; text-align:center; padding:0 12px; position:relative; z-index:1; }
+.flow__node { width:68px; height:68px; border-radius:50%; background:var(--ink); border:3px solid var(--red); display:grid; place-items:center; margin-bottom:14px; box-shadow:0 0 0 6px rgba(225,29,38,.12); }
+.flow__node svg { width:28px; height:28px; color:#fff; }
+.flow__node--red { background:var(--red); border-color:var(--red-dark); box-shadow:var(--shadow-red); }
+.flow__title { font-family:'Lexend',sans-serif; font-weight:700; color:var(--ink); font-size:.98rem; line-height:1.2; }
+.section--ink .flow__title { color:#fff; }
+.section--ink .flow__node { background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.28); }
+.section--ink .flow__node--red { background:var(--red); border-color:var(--red-dark); }
+.section--ink .flow::before { background:linear-gradient(90deg,rgba(255,255,255,.35),rgba(255,255,255,.08)); }
+.flow__arrow { position:absolute; top:50%; right:-12px; transform:translateY(-50%); color:rgba(255,255,255,.4); font-size:1.2rem; }
+
+/* Urgency band */
+.urgency { background:var(--red-tint); border:1.5px solid rgba(225,29,38,.22); border-radius:var(--radius); padding:18px 24px; display:flex; align-items:center; gap:14px; margin-top:28px; }
+.urgency svg { width:24px; height:24px; color:var(--red); flex:0 0 auto; }
+.urgency p { font-family:'Lexend',sans-serif; font-weight:600; color:var(--ink); font-size:.98rem; margin:0; }
+.urgency p span { color:var(--red); }
+
+@media(max-width:980px){
+  .cred { grid-template-columns:repeat(2,1fr); }
+  .cred__item { border-right:none; border-bottom:1px solid rgba(255,255,255,.18); }
+  .cred__item:nth-child(odd) { border-right:1px solid rgba(255,255,255,.18); }
+  .cred__item:last-child,.cred__item:nth-last-child(2):nth-child(odd) { border-bottom:none; }
+  .story { grid-template-columns:1fr; gap:48px; }
+  .story__badge { bottom:14px; }
+  .flow { grid-template-columns:1fr; gap:20px; }
+  .flow::before { display:none; }
+  .flow__step { flex-direction:row; text-align:left; gap:16px; }
+  .flow__node { flex:0 0 auto; margin-bottom:0; }
+}
+@media(max-width:640px){
+  .cred { grid-template-columns:1fr 1fr; }
+  .job-table thead th,.job-table tbody td,.job-table tfoot td { padding:12px 14px; font-size:.92rem; }
+}
+</style>
 </head>
 <body>
 
@@ -31,20 +106,19 @@
         <span class="brand__sub">Restoration Consultant</span>
       </span>
     </a>
-
     <nav class="nav" aria-label="Primary">
+      <a class="nav__link" href="#credibility">Why Us</a>
       <a class="nav__link" href="#how">How It Works</a>
-      <a class="nav__link" href="#who">Who It's For</a>
       <a class="nav__link" href="#numbers">The Numbers</a>
+      <a class="nav__link" href="#corey">About Corey</a>
       <a class="nav__link" href="#faq">FAQ</a>
     </nav>
-
     <div class="header-cta">
       <a class="header-phone" href="tel:+10000000000" aria-label="Call us">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
         (000) 000-0000
       </a>
-      <a class="btn btn--primary" href="apply.html">Apply to Partner</a>
+      <a class="btn btn--primary" href="apply.html">See If You Qualify</a>
       <button class="nav-toggle" data-nav-toggle aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
@@ -53,11 +127,12 @@
 </header>
 
 <nav class="mobile-menu" id="mobileMenu" data-mobile-menu aria-label="Mobile">
+  <a href="#credibility">Why Us</a>
   <a href="#how">How It Works</a>
-  <a href="#who">Who It's For</a>
   <a href="#numbers">The Numbers</a>
+  <a href="#corey">About Corey</a>
   <a href="#faq">FAQ</a>
-  <a class="btn btn--primary btn--block" href="apply.html">Apply to Partner</a>
+  <a class="btn btn--primary btn--block" href="apply.html">See If You Qualify</a>
 </nav>
 
 <!-- ============================ HERO ============================ -->
@@ -65,21 +140,22 @@
   <div class="container hero__inner">
     <div class="hero__copy">
       <span class="pill"><span class="dot"></span> Now partnering with restoration &amp; cleaning contractors</span>
-      <h1>You land the job.<br>We <span class="accent">fund, equip &amp; crew</span> it.</h1>
-      <p class="hero__sub">Stop turning away projects because you're short on equipment, labor, or cash flow. Bring us the job — we supply the crew, gear, operations and insurance, and execute it under your name. You stay the face of the client and keep your share. <strong style="color:#fff">Zero upfront from you.</strong></p>
+      <h1>Never Turn Down<br>Another Restoration<br>Job Again.</h1>
+      <p class="hero__sub" style="margin-top:18px;font-size:clamp(1.1rem,1.6vw,1.35rem);color:#DDE1E9;">Keep the client. Keep your brand. Keep your share.<br><strong style="color:#fff;">We handle the rest.</strong></p>
+      <p class="hero__sub" style="margin-top:14px;">You bring the job — we show up with the crews, equipment, funding, operations and insurance to execute it under your name. Residential and commercial. $0 upfront from you. Your customer never knows we were involved.</p>
 
       <div class="hero__cta">
         <a class="btn btn--primary btn--lg" href="apply.html">
-          See If You Qualify
+          See If Your Next Job Qualifies
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
         <a class="btn btn--ghost btn--lg" href="#how">How It Works</a>
       </div>
 
       <div class="hero__trust">
-        <span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> $0 upfront investment</span>
+        <span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> $0 upfront from you</span>
         <span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> You keep the client</span>
-        <span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Fully insured crews</span>
+        <span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> 30+ years behind every job</span>
       </div>
     </div>
 
@@ -95,9 +171,9 @@
           </div>
         </div>
         <div class="offer-card__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Commercial-grade equipment &amp; supplies</span></div>
-        <div class="offer-card__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Trained, insured labor on site</span></div>
-        <div class="offer-card__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Operational &amp; logistics support</span></div>
-        <div class="offer-card__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Insurance coverage when needed</span></div>
+        <div class="offer-card__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Trained, insured &amp; supervised crews</span></div>
+        <div class="offer-card__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Full project management &amp; quality control</span></div>
+        <div class="offer-card__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Residential &amp; commercial — all work guaranteed</span></div>
         <div class="offer-card__foot">
           <span class="stat">25%</span>
           <span class="lbl">your share of the project —<br>with none of your capital at risk</span>
@@ -107,15 +183,47 @@
   </div>
 </section>
 
-<!-- ============================ LOGO / INDUSTRY STRIP ============================ -->
+<!-- ============================ CREDIBILITY STRIP ============================ -->
+<section class="section--tight" id="credibility">
+  <div class="container">
+    <div class="center reveal" style="margin-bottom:30px;">
+      <span class="eyebrow">Why contractors trust Next Level</span>
+    </div>
+    <div class="cred reveal">
+      <div class="cred__item">
+        <div class="cred__num">30+</div>
+        <div class="cred__lbl">Years in the<br>Restoration Industry</div>
+      </div>
+      <div class="cred__item">
+        <!-- FILL IN: replace $XX with your actual figure e.g. "$10M+" -->
+        <div class="cred__num">$XX M+</div>
+        <div class="cred__lbl">In Restoration Revenue<br>Managed</div>
+      </div>
+      <div class="cred__item">
+        <!-- FILL IN: replace XX with actual number of states -->
+        <div class="cred__num">XX+</div>
+        <div class="cred__lbl">States Served Including<br>Catastrophe Response</div>
+      </div>
+      <div class="cred__item">
+        <!-- FILL IN: replace XX with actual number -->
+        <div class="cred__num">XX+</div>
+        <div class="cred__lbl">Large-Loss Projects<br>Completed</div>
+      </div>
+    </div>
+    <p class="center" style="margin-top:18px;font-size:.88rem;color:var(--muted-2);">Residential · Commercial · Catastrophe Response · National Experience</p>
+  </div>
+</section>
+
+<!-- ============================ INDUSTRY STRIP ============================ -->
 <section class="section--tight section--surface">
   <div class="container">
     <div class="logos reveal">
-      <span class="logos__label">Built for the trades that scale fast</span>
-      <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V8l7-5 7 5v13"/><path d="M9 21v-6h6v6"/></svg> Water Damage Restoration</span>
-      <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2v6"/><path d="M5 8c0 4 7 5 7 12 0-7 7-8 7-12a7 7 0 0 0-14 0Z"/></svg> Mold Remediation</span>
+      <span class="logos__label">Trades we partner on — residential &amp; commercial</span>
+      <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2v6"/><path d="M5 8c0 4 7 5 7 12 0-7 7-8 7-12a7 7 0 0 0-14 0Z"/></svg> Water Damage Restoration</span>
+      <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3"/><circle cx="6" cy="7" r="2"/><circle cx="18" cy="7" r="2"/><circle cx="6" cy="17" r="2"/><circle cx="18" cy="17" r="2"/></svg> Mold Remediation</span>
       <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg> Carpet Cleaning</span>
       <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 21h18M6 21V7l6-4 6 4v14"/><path d="M10 9h.01M14 9h.01M10 13h.01M14 13h.01"/></svg> Building Cleaning</span>
+      <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg> Catastrophe Response</span>
     </div>
   </div>
 </section>
@@ -128,12 +236,11 @@
       <h2>The work is there. The resources aren't.</h2>
       <p class="lead">You've got the leads and the relationships. But every time a bigger job comes in, the same three walls go up — and you watch the revenue walk out the door.</p>
     </div>
-
     <div class="grid grid--3">
       <div class="card pain reveal">
         <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
         <h3>No cash to float the job</h3>
-        <p>Big restoration jobs need thousands in materials and labor before you ever get paid. That upfront cost prices you out.</p>
+        <p>Big restoration jobs need thousands in materials and labor before you ever get paid. That upfront cost prices you out every time.</p>
       </div>
       <div class="card pain reveal">
         <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76Z"/></svg></div>
@@ -149,40 +256,121 @@
   </div>
 </section>
 
-<!-- ============================ SOLUTION / HOW IT WORKS ============================ -->
+<!-- ============================ HOW IT WORKS ============================ -->
 <section class="section section--ink" id="how">
   <div class="container">
     <div class="center reveal" style="max-width:760px;margin-inline:auto;margin-bottom:46px;">
       <span class="eyebrow">A partner, not a lender</span>
       <h2>We become your operations team — for the jobs you can't do alone.</h2>
-      <p class="lead">This isn't a loan and there's no debt. We partner on the project, supply everything it takes to complete it to standard, and split the revenue. Three steps, zero risk on your end.</p>
+      <p class="lead">This isn't a loan and there's no debt. We partner on the project, supply everything it takes to complete it to standard, and split the revenue. We manage the project from start to finish and guarantee the work.</p>
     </div>
 
+    <!-- Step-by-step flow diagram -->
+    <div class="flow reveal" style="margin-bottom:52px;">
+      <div class="flow__step">
+        <div class="flow__node">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg>
+        </div>
+        <div class="flow__title">Contractor<br>Finds Job</div>
+      </div>
+      <div class="flow__step">
+        <div class="flow__node">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <div class="flow__title">Next Level<br>Reviews Scope</div>
+      </div>
+      <div class="flow__step">
+        <div class="flow__node flow__node--red">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76Z"/></svg>
+        </div>
+        <div class="flow__title">Crew &amp; Equipment<br>Deployed</div>
+      </div>
+      <div class="flow__step">
+        <div class="flow__node">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2 3 7v6c0 5 3.8 8.5 9 9 5.2-.5 9-4 9-9V7l-9-5Z"/><path d="m9 12 2 2 4-4"/></svg>
+        </div>
+        <div class="flow__title">Job Completed<br>&amp; Guaranteed</div>
+      </div>
+      <div class="flow__step">
+        <div class="flow__node flow__node--red">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <div class="flow__title">Revenue<br>Shared</div>
+      </div>
+    </div>
+
+    <!-- Detailed 3-step breakdown -->
     <div class="steps">
       <div class="step reveal">
         <div class="step__num"></div>
         <span class="step__line"></span>
         <h3>You bring the job</h3>
-        <p>You found the lead and built the relationship — it stays 100% yours. Send us the scope and we scope the resources needed.</p>
+        <p>You found the lead and built the relationship — it stays 100% yours. Send us the scope and we assess what resources are needed. Residential or commercial, any size.</p>
       </div>
       <div class="step reveal">
         <div class="step__num"></div>
         <span class="step__line"></span>
-        <h3>We fund &amp; execute it</h3>
-        <p>We deploy the equipment, the trained crew, the operational support and the insurance, and complete the work to spec — under your brand.</p>
+        <h3>We fund, deploy &amp; manage</h3>
+        <p>We handle everything: equipment, trained crews, project management, quality control and insurance — all executed to spec under your brand. We supervise every stage so nothing falls through.</p>
       </div>
       <div class="step reveal">
         <div class="step__num"></div>
         <h3>You stay the face &amp; get paid</h3>
-        <p>The client only ever deals with you. The job closes, the revenue splits, and you've earned roughly 25% without touching your own capital.</p>
+        <p>Your customer only ever deals with you. The job closes, the revenue splits — roughly 25% in your pocket without touching your own capital. And the work is guaranteed.</p>
       </div>
     </div>
 
     <div class="center" style="margin-top:42px;">
-      <a class="btn btn--primary btn--lg reveal" href="apply.html">Apply to Partner on Your Next Job
+      <a class="btn btn--primary btn--lg reveal" href="apply.html">See If Your Next Job Qualifies
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
     </div>
+  </div>
+</section>
+
+<!-- ============================ TESTIMONIALS (moved up — right after How It Works) ============================ -->
+<section class="section section--surface" id="proof">
+  <div class="container">
+    <div class="center reveal" style="margin-bottom:44px;">
+      <span class="eyebrow">From the field</span>
+      <h2>Contractors who stopped leaving money on the table</h2>
+    </div>
+    <div class="grid grid--3">
+      <figure class="quote reveal">
+        <div class="quote__stars" aria-label="5 out of 5 stars">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2Z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2Z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2Z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2Z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2Z"/></svg>
+        </div>
+        <p>"I'd been turning down water-damage calls for two years because I couldn't staff them. Now I take the call, hand off the scope, and still walk away with a check. Game changer."</p>
+        <figcaption class="quote__by"><span class="avatar">MR</span><span><span class="who">Marcus R.</span><br><span class="role">Solo contractor · Carpet &amp; water</span></span></figcaption>
+      </figure>
+      <figure class="quote reveal">
+        <div class="quote__stars" aria-label="5 out of 5 stars">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2Z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2Z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2Z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2Z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2Z"/></svg>
+        </div>
+        <p>"We're a three-person shop. Partnering on the big jobs let us build a portfolio that lands even bigger ones. We didn't spend a dollar on equipment to do it."</p>
+        <figcaption class="quote__by"><span class="avatar">DL</span><span><span class="who">Denise L.</span><br><span class="role">Owner · Restoration startup</span></span></figcaption>
+      </figure>
+      <figure class="quote reveal">
+        <div class="quote__stars" aria-label="5 out of 5 stars">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2Z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2Z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2Z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2Z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2Z"/></svg>
+        </div>
+        <p>"The part that sold me: my customer never knew anything changed. Same point of contact — me. The crew showed up professional and insured. I'll keep sending jobs."</p>
+        <figcaption class="quote__by"><span class="avatar">JT</span><span><span class="who">Jerome T.</span><br><span class="role">Mold remediation contractor</span></span></figcaption>
+      </figure>
+    </div>
+    <p class="center" style="margin-top:22px;font-size:.84rem;color:var(--muted-2);">Illustrative examples of the partnership model. Names and details represent typical contractor scenarios.</p>
   </div>
 </section>
 
@@ -193,15 +381,15 @@
       <div class="reveal">
         <span class="eyebrow">Real-world math</span>
         <h2>A $50,000 job you couldn't have taken — now puts money in your pocket.</h2>
-        <p class="lead" style="margin-bottom:22px;">Instead of referring the job away or losing it entirely, you partner with us. We carry the cost and the labor. You carry the relationship. Everyone wins.</p>
+        <p class="lead" style="margin-bottom:22px;">Instead of referring the job away or losing it entirely, you partner with us. We carry the cost, the crew and the execution. You carry the relationship. Everyone wins.</p>
         <ul class="checklist">
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> No capital out of your pocket</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> No payroll or equipment to manage</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> No risk if the job is delayed or complex</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Project managed &amp; supervised from start to finish</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> All work is guaranteed — we make it right at our cost</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> A bigger portfolio to win the next one</li>
         </ul>
       </div>
-
       <div class="example reveal">
         <div class="example__head">
           <span class="tag">Example Project</span>
@@ -216,77 +404,137 @@
   </div>
 </section>
 
+<!-- ============================ JOB SIZE TABLE ============================ -->
+<section class="section section--surface">
+  <div class="container">
+    <div class="center reveal" style="max-width:720px;margin-inline:auto;margin-bottom:40px;">
+      <span class="eyebrow">What we partner on</span>
+      <h2>See exactly what size jobs we can help you take on.</h2>
+      <p class="lead">Residential and commercial. If you've got the lead, we've got the resources.</p>
+    </div>
+    <div class="table-wrap reveal">
+      <table class="job-table">
+        <thead>
+          <tr>
+            <th>Job Type</th>
+            <th>Project Size Range</th>
+            <th>Residential</th>
+            <th>Commercial</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Water Damage Restoration<div class="note">Extraction, drying, structural dry-out</div></td>
+            <td><span class="range">$5k – $500k+</span></td>
+            <td><svg viewBox="0 0 24 24" fill="none" stroke="#15803D" stroke-width="2.6" width="22" height="22" aria-label="Yes"><polyline points="20 6 9 17 4 12"/></svg></td>
+            <td><svg viewBox="0 0 24 24" fill="none" stroke="#15803D" stroke-width="2.6" width="22" height="22" aria-label="Yes"><polyline points="20 6 9 17 4 12"/></svg></td>
+          </tr>
+          <tr>
+            <td>Mold Remediation<div class="note">Inspection, containment, removal</div></td>
+            <td><span class="range">$5k – $250k+</span></td>
+            <td><svg viewBox="0 0 24 24" fill="none" stroke="#15803D" stroke-width="2.6" width="22" height="22" aria-label="Yes"><polyline points="20 6 9 17 4 12"/></svg></td>
+            <td><svg viewBox="0 0 24 24" fill="none" stroke="#15803D" stroke-width="2.6" width="22" height="22" aria-label="Yes"><polyline points="20 6 9 17 4 12"/></svg></td>
+          </tr>
+          <tr>
+            <td>Carpet &amp; Floor Cleaning<div class="note">Deep clean, steam, restoration</div></td>
+            <td><span class="range">$2k – $100k+</span></td>
+            <td><svg viewBox="0 0 24 24" fill="none" stroke="#15803D" stroke-width="2.6" width="22" height="22" aria-label="Yes"><polyline points="20 6 9 17 4 12"/></svg></td>
+            <td><svg viewBox="0 0 24 24" fill="none" stroke="#15803D" stroke-width="2.6" width="22" height="22" aria-label="Yes"><polyline points="20 6 9 17 4 12"/></svg></td>
+          </tr>
+          <tr>
+            <td>Building / Commercial Cleaning<div class="note">Large facilities, post-construction</div></td>
+            <td><span class="range">$10k – $500k+</span></td>
+            <td><svg viewBox="0 0 24 24" fill="none" stroke="#15803D" stroke-width="2.6" width="22" height="22" aria-label="Yes"><polyline points="20 6 9 17 4 12"/></svg></td>
+            <td><svg viewBox="0 0 24 24" fill="none" stroke="#15803D" stroke-width="2.6" width="22" height="22" aria-label="Yes"><polyline points="20 6 9 17 4 12"/></svg></td>
+          </tr>
+          <tr>
+            <td>Catastrophe Response<div class="note">Large-loss, emergency deployment</div></td>
+            <td><span class="range">Custom</span></td>
+            <td><svg viewBox="0 0 24 24" fill="none" stroke="#15803D" stroke-width="2.6" width="22" height="22" aria-label="Yes"><polyline points="20 6 9 17 4 12"/></svg></td>
+            <td><svg viewBox="0 0 24 24" fill="none" stroke="#15803D" stroke-width="2.6" width="22" height="22" aria-label="Yes"><polyline points="20 6 9 17 4 12"/></svg></td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr><td colspan="4">Not sure if your job qualifies? Apply anyway — we'll let you know on your strategy call. We review every project scope individually.</td></tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</section>
+
 <!-- ============================ STATS BAND ============================ -->
-<section class="section--tight section--surface">
+<section class="section--tight" style="background:var(--ink);">
   <div class="container">
     <div class="stats">
-      <div class="stat-card reveal"><div class="num">$0</div><div class="cap">Upfront cost to you</div></div>
-      <div class="stat-card reveal"><div class="num">~25%</div><div class="cap">Your share of every job</div></div>
-      <div class="stat-card reveal"><div class="num">100%</div><div class="cap">You keep the client &amp; the lead</div></div>
-      <div class="stat-card reveal"><div class="num">4</div><div class="cap">Restoration trades we serve</div></div>
+      <!-- FILL IN: update XX values with your actual numbers -->
+      <div class="stat-card reveal" style="background:transparent;"><div class="num" style="color:var(--red);">30+</div><div class="cap" style="color:#B9BFC9;">Years Industry Experience</div></div>
+      <div class="stat-card reveal" style="background:transparent;"><div class="num" style="color:var(--red);">$0</div><div class="cap" style="color:#B9BFC9;">Upfront cost to you</div></div>
+      <div class="stat-card reveal" style="background:transparent;"><div class="num" style="color:var(--red);">~25%</div><div class="cap" style="color:#B9BFC9;">Your share of every project</div></div>
+      <div class="stat-card reveal" style="background:transparent;"><div class="num" style="color:var(--red);">100%</div><div class="cap" style="color:#B9BFC9;">Work guaranteed — at our cost</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ COREY PITTS STORY ============================ -->
+<section class="section" id="corey">
+  <div class="container">
+    <div class="story">
+      <div class="story__photo reveal">
+        <!-- REPLACE: swap the placeholder below with Corey's professional photo
+             <img src="assets/corey-pitts.jpg" alt="Corey Pitts, Founder of Next Level Restoration Consultant" style="width:100%;border-radius:var(--radius-lg);"> -->
+        <div class="story__img-wrap">
+          <div class="story__img-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg>
+          </div>
+        </div>
+        <div class="story__badge">
+          <div class="s">30+</div>
+          <div class="l">Years in the<br>restoration industry</div>
+        </div>
+      </div>
+
+      <div class="story__body reveal">
+        <span class="eyebrow">The person behind your next job</span>
+        <h2>Meet Corey Pitts</h2>
+        <p class="story__founder">Founder, Next Level Restoration Consultant</p>
+        <p>Corey started with a carpet cleaning business and built restoration operations serving residential, commercial, and catastrophe projects nationwide. Over 30+ years he has managed large-loss projects, led crews across multiple states, and developed the systems that let contractors execute bigger work without the overhead that kills their margins.</p>
+        <p style="margin-top:14px;">Today, Next Level exists for one reason: to help contractors like you grow faster by providing the crews, equipment, systems and operational support needed to take on larger projects — without debt, without payroll headaches, and without losing the client relationships you've spent years building.</p>
+        <p style="margin-top:14px;"><strong>When a contractor partners with Next Level, they're not just getting resources. They're getting 30+ years of restoration experience standing behind every job.</strong></p>
+        <ul class="story__points">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Built and scaled restoration operations from the ground up</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> National catastrophe response and large-loss experience</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Residential &amp; commercial expertise across multiple trades</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Committed to your brand, your client, and your reputation</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ============================ WHO IT'S FOR ============================ -->
-<section class="section" id="who">
+<section class="section section--surface" id="who">
   <div class="container">
     <div class="center reveal" style="max-width:720px;margin-inline:auto;margin-bottom:46px;">
       <span class="eyebrow">Is this you?</span>
       <h2>Built for contractors ready to grow — without going into debt.</h2>
       <p class="lead">If you've got the work but not the bandwidth, you're exactly who we partner with.</p>
     </div>
-
     <div class="grid grid--2">
       <div class="card card--red reveal">
         <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg></div>
         <h3>Solo contractors</h3>
-        <p>One-person operations handling smaller jobs but ready to scale. You hustle the leads — let us handle the heavy lifting so you can finally say "yes" to the big ones.</p>
+        <p>One-person operations handling smaller jobs but ready to scale. You hustle the leads — let us handle the heavy lifting so you can finally say "yes" to the big residential and commercial jobs.</p>
       </div>
       <div class="card card--red reveal">
         <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
         <h3>Small teams &amp; startups</h3>
-        <p>New restoration or cleaning businesses with limited resources. Plug into our equipment, crews and operations and compete for jobs that used to be out of reach.</p>
+        <p>New restoration or cleaning businesses with limited resources. Plug into our equipment, crews, and 30+ years of operational know-how to compete for jobs that used to be completely out of reach.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============================ TESTIMONIALS ============================ -->
-<section class="section section--surface" id="proof">
-  <div class="container">
-    <div class="center reveal" style="margin-bottom:44px;">
-      <span class="eyebrow">From the field</span>
-      <h2>Contractors who stopped leaving money on the table</h2>
-    </div>
-    <div class="grid grid--3">
-      <figure class="quote reveal">
-        <div class="quote__stars" aria-label="5 out of 5 stars">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2Z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2Z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2Z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2Z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2Z"/></svg>
-        </div>
-        <p>"I'd been turning down water-damage calls for two years because I couldn't staff them. Now I take the call, hand off the scope, and still walk away with a check. Game changer."</p>
-        <figcaption class="quote__by"><span class="avatar">MR</span><span><span class="who">Marcus R.</span><br><span class="role">Solo contractor · Carpet &amp; water</span></span></figcaption>
-      </figure>
-      <figure class="quote reveal">
-        <div class="quote__stars" aria-label="5 out of 5 stars">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2Z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2Z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2Z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2Z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2Z"/></svg>
-        </div>
-        <p>"We're a three-person shop. Partnering on the big jobs let us build a portfolio that lands even bigger ones. We didn't spend a dollar on equipment to do it."</p>
-        <figcaption class="quote__by"><span class="avatar">DL</span><span><span class="who">Denise L.</span><br><span class="role">Owner · Restoration startup</span></span></figcaption>
-      </figure>
-      <figure class="quote reveal">
-        <div class="quote__stars" aria-label="5 out of 5 stars">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2Z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2Z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2Z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2Z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2Z"/></svg>
-        </div>
-        <p>"The part that sold me: my customer never knew anything changed. Same point of contact — me. The crew showed up professional and insured. I'll keep sending jobs."</p>
-        <figcaption class="quote__by"><span class="avatar">JT</span><span><span class="who">Jerome T.</span><br><span class="role">Mold remediation contractor</span></span></figcaption>
-      </figure>
-    </div>
-    <p class="center" style="margin-top:22px;font-size:.86rem;color:var(--muted-2);">Illustrative examples of the partnership model. Names and details represent typical contractor scenarios.</p>
-  </div>
-</section>
-
-<!-- ============================ WHY US / VALUE ============================ -->
+<!-- ============================ WHY PARTNER ============================ -->
 <section class="section">
   <div class="container">
     <div class="center reveal" style="max-width:720px;margin-inline:auto;margin-bottom:46px;">
@@ -296,23 +544,23 @@
     <div class="grid grid--4">
       <div class="card reveal">
         <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2 3 7v6c0 5 3.8 8.5 9 9 5.2-.5 9-4 9-9V7l-9-5Z"/></svg></div>
-        <h3>Fully insured</h3>
-        <p>Insurance coverage on the work when the job calls for it, so you're protected.</p>
+        <h3>All work guaranteed</h3>
+        <p>Every job is completed to spec and we stand behind it. If something isn't right, we make it right — at our cost, not yours.</p>
       </div>
       <div class="card reveal">
-        <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-        <h3>Fast mobilization</h3>
-        <p>Equipment and crews ready to deploy so restoration timelines don't slip.</p>
+        <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3>Supervised crews</h3>
+        <p>Every crew is trained, insured, and supervised by our team to restoration standards. Quality control on every stage.</p>
       </div>
       <div class="card reveal">
         <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 9V5a3 3 0 0 0-6 0v4"/><rect x="2" y="9" width="20" height="12" rx="2"/></svg></div>
         <h3>You keep control</h3>
-        <p>The lead, the client and your brand stay yours — always. We work behind you.</p>
+        <p>The lead, the client and your brand stay yours — always. We work entirely behind you. Your customer never knows we were involved.</p>
       </div>
       <div class="card reveal">
-        <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="22" y1="12" x2="2" y2="12"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11Z"/><line x1="6" y1="16" x2="6.01" y2="16"/><line x1="10" y1="16" x2="10.01" y2="16"/></svg></div>
+        <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
         <h3>Expert guidance</h3>
-        <p>Tap operational know-how and consulting that helps you bid and win smarter.</p>
+        <p>30+ years of restoration expertise behind every call. We help you scope, bid, and execute smarter — not just once, but long-term.</p>
       </div>
     </div>
   </div>
@@ -326,36 +574,57 @@
       <h2>What contractors ask before partnering</h2>
     </div>
     <div class="faq">
+
       <details class="faq__item reveal">
         <summary class="faq__q">Is this a loan? Will I owe money?
           <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
         </summary>
         <div class="faq__a">No. There's no loan, no debt, and no repayment. This is "Funding-as-a-Service" — we invest the equipment, labor and operations into your job and earn our share only when the project is completed and paid. If the job doesn't happen, you owe nothing.</div>
       </details>
+
+      <!-- NEW: crew quality — placed 2nd as it's the loudest silent objection -->
+      <details class="faq__item reveal">
+        <summary class="faq__q">It's my name on the job — what if the crew does bad work?
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <div class="faq__a">Your reputation is the whole point of this partnership, so we protect it like it's ours. Every crew we deploy is trained, insured, and supervised to restoration standards, and the work is completed to spec before the job closes. If something isn't right, we make it right — at our cost, not yours. You stay the client's point of contact the entire time, so you're never blindsided and you always know the status of the job. We don't get paid unless the job is done right.</div>
+      </details>
+
       <details class="faq__item reveal">
         <summary class="faq__q">Do I lose my customer or my lead?
           <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
         </summary>
-        <div class="faq__a">Never. The lead is yours and stays yours. You remain the face of the client and the only point of contact. We operate behind the scenes under your brand so your relationship is fully protected.</div>
+        <div class="faq__a">Never. The lead is yours and stays yours. You remain the face of the client and the only point of contact. We operate behind the scenes under your brand so your relationship is fully protected — your customer only ever knows you.</div>
       </details>
+
       <details class="faq__item reveal">
         <summary class="faq__q">How much do I actually earn?
           <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
         </summary>
-        <div class="faq__a">You earn roughly 25% of the project value with zero capital invested. On a $50,000 job, that's about $12,500 in your pocket for bringing the work and staying the face of the client. Exact splits are confirmed per project on your strategy call.</div>
+        <div class="faq__a">You earn roughly 25% of the project value with zero capital invested. On a $50,000 job, that's about $12,500 in your pocket for bringing the work and staying the face of the client. Exact splits are confirmed per project scope on your strategy call.</div>
       </details>
+
+      <details class="faq__item reveal">
+        <summary class="faq__q">Do you handle residential and commercial jobs?
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <div class="faq__a">Yes — both. We partner on residential and commercial projects across water damage restoration, mold remediation, carpet cleaning, building cleaning, and catastrophe response. Project sizes range from $2k residential cleans all the way to $500k+ commercial large-loss jobs.</div>
+      </details>
+
       <details class="faq__item reveal">
         <summary class="faq__q">Which industries do you work with?
           <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
         </summary>
-        <div class="faq__a">We specialize in restoration and cleaning trades: water damage restoration, mold remediation, carpet cleaning, and building/commercial cleaning. If your work is adjacent to these, apply and we'll let you know if it's a fit.</div>
+        <div class="faq__a">We specialize in restoration and cleaning trades: water damage restoration, mold remediation, carpet cleaning, building/commercial cleaning, and catastrophe response. If your work is adjacent, apply and we'll let you know if it's a fit on your call.</div>
       </details>
+
       <details class="faq__item reveal">
         <summary class="faq__q">What do I need to qualify?
           <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
         </summary>
-        <div class="faq__a">An active lead or project (or a steady flow of them) in one of the trades above. You don't need equipment, a crew, or cash — that's exactly what we bring. Apply in under two minutes and book a free strategy call to map your first job.</div>
+        <div class="faq__a">An active lead or project (or a steady flow of them) in one of the trades above. You don't need equipment, a crew, or cash — that's exactly what we bring. Apply in under two minutes and book a free strategy call. We only partner with a limited number of contractors per market, so spaces are limited.</div>
       </details>
+
     </div>
   </div>
 </section>
@@ -366,9 +635,9 @@
     <div class="ctaband reveal">
       <span class="eyebrow" style="color:#fff;">Your next job is waiting</span>
       <h2>Stop turning away revenue. Start partnering.</h2>
-      <p>Apply in under two minutes. If you're a fit, you'll book a free strategy call and we'll map out how to fund and execute your next project together.</p>
+      <p>Apply in under two minutes. If you're a fit, you'll book a free strategy call with Corey and map out exactly how we fund and execute your next project together.</p>
       <div style="margin-top:28px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
-        <a class="btn btn--primary btn--lg" href="apply.html">Apply to Partner Now
+        <a class="btn btn--primary btn--lg" href="apply.html">See If Your Next Job Qualifies
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
       </div>
@@ -377,6 +646,12 @@
         <span class="ti" style="color:#fff;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" style="color:#fff" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> No obligation</span>
         <span class="ti" style="color:#fff;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" style="color:#fff" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> 2-minute application</span>
       </div>
+    </div>
+
+    <!-- Urgency / scarcity -->
+    <div class="urgency reveal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <p><span>Limited partnerships per market.</span> To maintain response times and quality standards, we only take on a select number of contractor partners per area. Apply today to see if your market is still available.</p>
     </div>
   </div>
 </section>
@@ -396,18 +671,19 @@
           </svg>
           <span class="brand__text"><span class="brand__name">NEXT LEVEL</span><span class="brand__sub">Restoration Consultant</span></span>
         </a>
-        <p style="color:#9AA1AC;max-width:38ch;">Funding-as-a-Service for restoration &amp; cleaning contractors. You bring the job — we bring everything it takes to complete it.</p>
+        <p style="color:#9AA1AC;max-width:38ch;">Funding-as-a-Service for restoration &amp; cleaning contractors. You bring the job — we bring 30+ years of expertise and everything it takes to complete it.</p>
       </div>
       <div>
         <h4>Company</h4>
+        <a href="#credibility">Why Us</a><br>
         <a href="#how">How It Works</a><br>
-        <a href="#who">Who It's For</a><br>
         <a href="#numbers">The Numbers</a><br>
+        <a href="#corey">About Corey</a><br>
         <a href="#faq">FAQ</a>
       </div>
       <div>
         <h4>Get Started</h4>
-        <a href="apply.html">Apply to Partner</a><br>
+        <a href="apply.html">See If You Qualify</a><br>
         <a href="tel:+10000000000">(000) 000-0000</a><br>
         <a href="mailto:hello@nextlevelrc.com">hello@nextlevelrc.com</a>
       </div>
@@ -416,7 +692,7 @@
       <span>© <span data-year>2026</span> Next Level Restoration Consultant. All rights reserved.</span>
       <span><a href="#">Privacy</a> &nbsp;·&nbsp; <a href="#">Terms</a></span>
     </div>
-    <p class="footer-disclaimer">This is a business partnership offer for contractors, not a lending or cash-advance product. Revenue shares, costs and coverage are illustrative and confirmed per project. Partnership is subject to qualification and approval.</p>
+    <p class="footer-disclaimer">This is a business partnership offer for contractors, not a lending or cash-advance product. Revenue shares, costs and coverage are illustrative and confirmed per project. All work performed through the partnership is supervised, insured and guaranteed. Partnership is subject to qualification and approval.</p>
   </div>
 </footer>
 
