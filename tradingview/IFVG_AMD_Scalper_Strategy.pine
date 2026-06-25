@@ -1,0 +1,258 @@
+//@version=5
+// ============================================================================
+//  IFVG + Power of Three (AMD) Scalper  —  STRATEGY (backtest) version
+//  ---------------------------------------------------------------------------
+//  Same non-repainting signal engine as the indicator, wired into
+//  strategy.entry / strategy.exit so TradingView's Strategy Tester reports
+//  win rate, profit factor, drawdown, etc.
+//
+//  Signal logic (identical to the indicator):
+//   1) INVERSED FVG: 3-candle gap -> inverted on a close-through -> signal when
+//      price retraces and respects the Consequent Encroachment (50% midpoint).
+//   2) POWER OF THREE (AMD): liquidity sweep of a recent swing = manipulation;
+//      sell-side sweep is bullish, buy-side sweep is bearish.
+//   Confluence of both is required by default.
+//
+//  Trades use the video methodology: entry on signal, stop beyond structure
+//  (or ATR), target at an R-multiple ("draw on liquidity" proxy).
+//
+//  Fills are on the NEXT bar's open (realistic, non-repainting). Set position
+//  size, commission and slippage to match YOUR broker in the inputs / the
+//  strategy "Properties" tab before trusting any stat.
+// ============================================================================
+
+strategy("IFVG + Power of Three (AMD) Scalper [Strategy]", shorttitle="IFVG+AMD St", overlay=true, max_boxes_count=500, max_lines_count=500, max_labels_count=500, initial_capital=10000, default_qty_type=strategy.percent_of_equity, default_qty_value=10, commission_type=strategy.commission.percent, commission_value=0.02, slippage=1, pyramiding=0, calc_on_every_tick=false)
+
+// ----------------------------------------------------------------------------
+// INPUTS
+// ----------------------------------------------------------------------------
+grpFVG = "Fair Value Gaps / IFVG"
+showFVG      = input.bool(true,  "Show raw FVG zones",                 group=grpFVG)
+showIFVG     = input.bool(true,  "Show Inversed FVG (IFVG) zones",     group=grpFVG)
+useATR       = input.bool(true,  "Filter small gaps by ATR",           group=grpFVG)
+atrMult      = input.float(0.20, "Min gap size (x ATR)", minval=0.0, step=0.05, group=grpFVG)
+fvgMaxAge    = input.int(250,    "Discard zones older than (bars)", minval=10, group=grpFVG)
+extendBoxes  = input.bool(true,  "Extend zones to current bar",        group=grpFVG)
+
+grpAMD = "Power of Three (AMD) — Liquidity Sweep"
+pivotLen     = input.int(8,      "Swing pivot lookback", minval=2,      group=grpAMD)
+showSweeps   = input.bool(true,  "Show liquidity-sweep markers",       group=grpAMD)
+
+grpSig = "Signals"
+sigMode      = input.string("Confluence (IFVG + Sweep)", "Signal mode", options=["Confluence (IFVG + Sweep)", "Either (IFVG or Sweep)", "IFVG only", "Sweep only"], group=grpSig)
+confWindow   = input.int(8,      "Confluence window (bars)", minval=1,  group=grpSig)
+useTrend     = input.bool(true,  "EMA trend filter",                   group=grpSig)
+emaLen       = input.int(200,    "EMA length", minval=1,               group=grpSig)
+cooldown     = input.int(4,      "Min bars between signals", minval=0,  group=grpSig)
+requireDir   = input.bool(true,  "Require candle direction on trigger", group=grpSig)
+
+grpTrade = "Trade Management"
+slMethod     = input.string("ATR", "Stop method", options=["ATR", "Swing"], group=grpTrade)
+slAtrMult    = input.float(1.0,  "SL = ATR x", minval=0.1, step=0.1,    group=grpTrade)
+rr           = input.float(2.0,  "Risk : Reward (TP)", minval=0.5, step=0.5, group=grpTrade)
+allowReverse = input.bool(false, "Reverse on opposite signal", tooltip="On: an opposite signal closes and flips the position. Off: ignore signals while in a trade and exit only on SL/TP.", group=grpTrade)
+tradeLong    = input.bool(true,  "Allow longs",                        group=grpTrade)
+tradeShort   = input.bool(true,  "Allow shorts",                       group=grpTrade)
+
+grpBT = "Backtest Window"
+useDates     = input.bool(false, "Limit backtest date range",          group=grpBT)
+startTime    = input.time(timestamp("01 Jan 2020 00:00"), "From",      group=grpBT)
+endTime      = input.time(timestamp("01 Jan 2099 00:00"), "To",        group=grpBT)
+
+grpStyle = "Style"
+bullCol     = input.color(color.new(color.teal,    82), "Bullish FVG",        group=grpStyle)
+bearCol     = input.color(color.new(color.red,     82), "Bearish FVG",        group=grpStyle)
+invBullCol  = input.color(color.new(color.lime,    76), "Bullish IFVG (support)",   group=grpStyle)
+invBearCol  = input.color(color.new(color.fuchsia, 76), "Bearish IFVG (resistance)", group=grpStyle)
+ceCol       = input.color(color.new(color.gray,    0),  "CE (50%) line",      group=grpStyle)
+
+// ----------------------------------------------------------------------------
+// HELPERS
+// ----------------------------------------------------------------------------
+atr      = ta.atr(14)
+minSize  = useATR ? atrMult * atr : 0.0
+ema      = ta.ema(close, emaLen)
+trendUp  = not useTrend or close > ema
+trendDn  = not useTrend or close < ema
+inWindow = not useDates or (time >= startTime and time <= endTime)
+
+type FVG
+    float top      = na
+    float bot      = na
+    int   dir      = 0       // 1 = bullish gap, -1 = bearish gap (original polarity)
+    bool  inverted = false
+    bool  signaled = false
+    int   born     = 0
+    box   bx       = na
+    line  ce       = na
+
+var array<FVG> fvgs = array.new<FVG>()
+
+bool buyIFVG  = false
+bool sellIFVG = false
+
+// ----------------------------------------------------------------------------
+// CORE PROCESSING — once per CLOSED bar (non-repainting)
+// ----------------------------------------------------------------------------
+if barstate.isconfirmed and bar_index > 3
+    makeBox = showFVG or showIFVG
+
+    i = array.size(fvgs) - 1
+    while i >= 0
+        f = array.get(fvgs, i)
+        remove = false
+
+        if bar_index - f.born > fvgMaxAge
+            if not na(f.bx)
+                box.delete(f.bx)
+            if not na(f.ce)
+                line.delete(f.ce)
+            remove := true
+        else
+            mid = (f.top + f.bot) / 2.0
+
+            if extendBoxes
+                if not na(f.bx)
+                    box.set_right(f.bx, bar_index)
+                if not na(f.ce)
+                    line.set_x2(f.ce, bar_index)
+
+            if not f.inverted
+                inv = (f.dir == 1 and close < f.bot) or (f.dir == -1 and close > f.top)
+                if inv
+                    f.inverted := true
+                    isResist = f.dir == 1
+                    newBg    = isResist ? invBearCol : invBullCol
+                    newBord  = isResist ? color.new(color.fuchsia, 35) : color.new(color.lime, 35)
+                    if not na(f.bx)
+                        box.set_bgcolor(f.bx, showIFVG ? newBg : na)
+                        box.set_border_color(f.bx, showIFVG ? newBord : na)
+                    if not na(f.ce)
+                        line.set_color(f.ce, showIFVG ? ceCol : na)
+            else
+                if not f.signaled
+                    if f.dir == 1
+                        if high >= mid and close < mid and (not requireDir or close < open)
+                            f.signaled := true
+                            sellIFVG := true
+                    else
+                        if low <= mid and close > mid and (not requireDir or close > open)
+                            f.signaled := true
+                            buyIFVG := true
+
+        if remove
+            array.remove(fvgs, i)
+        i -= 1
+
+    bullGap = low > high[2] and (low - high[2]) > minSize
+    bearGap = high < low[2] and (low[2] - high) > minSize
+
+    if bullGap
+        nf = FVG.new(top=low, bot=high[2], dir=1, born=bar_index)
+        if makeBox
+            nf.bx := box.new(bar_index - 1, nf.top, bar_index, nf.bot, border_color=showFVG ? color.new(color.teal, 45) : na, bgcolor=showFVG ? bullCol : na)
+            nf.ce := line.new(bar_index - 1, (nf.top + nf.bot) / 2.0, bar_index, (nf.top + nf.bot) / 2.0, color=showFVG ? ceCol : na, style=line.style_dotted)
+        array.push(fvgs, nf)
+
+    if bearGap
+        nf = FVG.new(top=low[2], bot=high, dir=-1, born=bar_index)
+        if makeBox
+            nf.bx := box.new(bar_index - 1, nf.top, bar_index, nf.bot, border_color=showFVG ? color.new(color.red, 45) : na, bgcolor=showFVG ? bearCol : na)
+            nf.ce := line.new(bar_index - 1, (nf.top + nf.bot) / 2.0, bar_index, (nf.top + nf.bot) / 2.0, color=showFVG ? ceCol : na, style=line.style_dotted)
+        array.push(fvgs, nf)
+
+// ----------------------------------------------------------------------------
+// POWER OF THREE — liquidity sweep (manipulation) detection
+// ----------------------------------------------------------------------------
+ph = ta.pivothigh(pivotLen, pivotLen)
+pl = ta.pivotlow(pivotLen, pivotLen)
+var float lastPH = na
+var float lastPL = na
+lastPH := not na(ph) ? ph : lastPH
+lastPL := not na(pl) ? pl : lastPL
+
+bearSweep = not na(lastPH) and high > lastPH and close < lastPH and barstate.isconfirmed
+bullSweep = not na(lastPL) and low  < lastPL and close > lastPL and barstate.isconfirmed
+
+// ----------------------------------------------------------------------------
+// COMBINE INTO SIGNALS
+// ----------------------------------------------------------------------------
+var int bullSweepBar = na
+var int bearSweepBar = na
+var int buyIFVGBar   = na
+var int sellIFVGBar  = na
+bullSweepBar := bullSweep ? bar_index : bullSweepBar
+bearSweepBar := bearSweep ? bar_index : bearSweepBar
+buyIFVGBar   := buyIFVG   ? bar_index : buyIFVGBar
+sellIFVGBar  := sellIFVG  ? bar_index : sellIFVGBar
+
+bullSweepRecent = not na(bullSweepBar) and bar_index - bullSweepBar <= confWindow
+bearSweepRecent = not na(bearSweepBar) and bar_index - bearSweepBar <= confWindow
+buyIFVGRecent   = not na(buyIFVGBar)   and bar_index - buyIFVGBar   <= confWindow
+sellIFVGRecent  = not na(sellIFVGBar)  and bar_index - sellIFVGBar  <= confWindow
+
+buyBase = switch sigMode
+    "Confluence (IFVG + Sweep)" => (buyIFVG and bullSweepRecent) or (bullSweep and buyIFVGRecent)
+    "Either (IFVG or Sweep)"    => buyIFVG or bullSweep
+    "IFVG only"                 => buyIFVG
+    "Sweep only"                => bullSweep
+    => false
+
+sellBase = switch sigMode
+    "Confluence (IFVG + Sweep)" => (sellIFVG and bearSweepRecent) or (bearSweep and sellIFVGRecent)
+    "Either (IFVG or Sweep)"    => sellIFVG or bearSweep
+    "IFVG only"                 => sellIFVG
+    "Sweep only"                => bearSweep
+    => false
+
+var int lastSigBar = na
+canFire = na(lastSigBar) or bar_index - lastSigBar >= cooldown
+buy  = buyBase  and trendUp and canFire and tradeLong
+sell = sellBase and trendDn and canFire and tradeShort and not buy
+lastSigBar := (buy or sell) ? bar_index : lastSigBar
+
+// ----------------------------------------------------------------------------
+// VISUALS (context only — the Strategy Tester reports the numbers)
+// ----------------------------------------------------------------------------
+plotshape(showSweeps and bullSweep, title="Sell-side sweep", style=shape.triangleup,   location=location.belowbar, color=color.new(color.aqua, 0),   size=size.tiny)
+plotshape(showSweeps and bearSweep, title="Buy-side sweep",  style=shape.triangledown, location=location.abovebar, color=color.new(color.orange, 0), size=size.tiny)
+plotshape(buy,  title="BUY",  style=shape.labelup,   location=location.belowbar, color=color.new(color.green, 0), text="BUY",  textcolor=color.white, size=size.tiny)
+plotshape(sell, title="SELL", style=shape.labeldown, location=location.abovebar, color=color.new(color.red, 0),   text="SELL", textcolor=color.white, size=size.tiny)
+
+// ----------------------------------------------------------------------------
+// ORDERS
+// ----------------------------------------------------------------------------
+f_sl(bool isLong) =>
+    isLong ? (slMethod == "ATR" or na(lastPL) ? close - slAtrMult * atr : math.min(lastPL, low)) : (slMethod == "ATR" or na(lastPH) ? close + slAtrMult * atr : math.max(lastPH, high))
+
+var float longSL  = na
+var float longTP  = na
+var float shortSL = na
+var float shortTP = na
+
+canLong  = allowReverse ? true : strategy.position_size == 0
+canShort = allowReverse ? true : strategy.position_size == 0
+
+if buy and inWindow and canLong
+    sl = f_sl(true)
+    longSL := sl
+    longTP := close + (close - sl) * rr
+    strategy.entry("Long", strategy.long)
+
+if sell and inWindow and canShort
+    sl = f_sl(false)
+    shortSL := sl
+    shortTP := close - (sl - close) * rr
+    strategy.entry("Short", strategy.short)
+
+// OCO stop/target exits — only act while the matching entry is open
+strategy.exit("XL", from_entry="Long",  stop=longSL,  limit=longTP)
+strategy.exit("XS", from_entry="Short", stop=shortSL, limit=shortTP)
+
+// Flatten everything outside the backtest window
+if not inWindow
+    strategy.close_all(comment="out of window")
+
+// Show the active stop / target while in a trade
+plot(strategy.position_size > 0 ? longSL  : strategy.position_size < 0 ? shortSL : na, "Active SL", color=color.new(color.red, 0),   style=plot.style_linebr, linewidth=1)
+plot(strategy.position_size > 0 ? longTP  : strategy.position_size < 0 ? shortTP : na, "Active TP", color=color.new(color.green, 0), style=plot.style_linebr, linewidth=1)

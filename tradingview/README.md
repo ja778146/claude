@@ -40,9 +40,32 @@ quality for scalping.
 - More signals: Signal mode = `Either`, turn the EMA filter off.
 - Fewer/cleaner: keep `Confluence`, raise the ATR gap filter to `0.3–0.5`.
 
+## Backtesting (strategy version)
+
+[`IFVG_AMD_Scalper_Strategy.pine`](./IFVG_AMD_Scalper_Strategy.pine) is the same signal engine
+wired into `strategy.entry` / `strategy.exit` so you can measure it.
+
+1. Pine Editor → paste the strategy file → **Add to chart**.
+2. Open the **Strategy Tester** tab → read win rate, profit factor, max drawdown, etc.
+3. Fills are on the **next bar's open** (realistic, non-repainting).
+4. Set realistic costs: position size in the strategy **Properties** tab; commission/slippage in
+   the inputs (defaults: 10% equity/trade, 0.02% commission, 1 tick slippage) — match your broker.
+
+Extra inputs in the strategy version:
+
+| Setting | What it does |
+|---|---|
+| **Stop method** | `ATR` (volatility stop) or `Swing` (just past the swept liquidity). |
+| **Risk : Reward** | Take-profit as a multiple of the stop distance. |
+| **Reverse on opposite signal** | Off (default) = one trade at a time, exit on SL/TP. On = flip on the opposite signal. |
+| **Allow longs / shorts** | Restrict direction. |
+| **Backtest window** | Limit the test to a date range. |
+
+> Backtests are optimistic by nature (no spread surprises, perfect fills). Treat the numbers as a
+> relative filter for tuning settings, then forward-test on a demo before going live.
+
 ## Honest note
 
 No indicator is "extremely accurate" by itself — anyone claiming otherwise is selling something.
 This codifies the two strategies into mechanical, **non-repainting** signals (each confirms at bar
-close, not intrabar). **Backtest on your symbol/timeframe and always trade with a stop.** For
-backtest stats, it can be converted to a `strategy()` with `strategy.entry`/`strategy.exit` calls.
+close, not intrabar). **Backtest on your symbol/timeframe and always trade with a stop.**
