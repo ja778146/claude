@@ -184,6 +184,9 @@ else
 //Order Block Detector
 bar_index_Supply_OB = ta.valuewhen(High_Correct != High_Correct[1], bar_index[1],0)
 bar_index_Demand_OB=ta.valuewhen(Low_Correct != Low_Correct[1], bar_index[1],0)
+//Clamp dynamic history offsets to stay within Pine's max_bars_back (avoids 'too far' runtime error)
+demIdx = (bar_index - bar_index_Demand_OB) > 4990 ? 4990 : (bar_index - bar_index_Demand_OB)
+supIdx = (bar_index - bar_index_Supply_OB) > 4990 ? 4990 : (bar_index - bar_index_Supply_OB)
 /////////////////////////////////
 var DOB_index = 0
 var SOB_index = 0
@@ -239,9 +242,9 @@ var float DCRb1 = 0.0
 
 
 if bar_index >= bar_index_Demand_OB + 1
-    DCRa1 := Candle_Range[bar_index - bar_index_Demand_OB + 1]
-    DCRO  := Candle_Range[bar_index - bar_index_Demand_OB]
-    DCRb1 := Candle_Range[bar_index - bar_index_Demand_OB - 1]
+    DCRa1 := Candle_Range[demIdx + 1]
+    DCRO  := Candle_Range[demIdx]
+    DCRb1 := Candle_Range[demIdx - 1]
 
 //Demand Min ohlc{Var}
 var float DminOpen = 0.0
@@ -256,27 +259,27 @@ var float DmaxLow = 0.0
 var float DmaxClose = 0.0
 // Demand Min ohlc{Find}
 if  bar_index > bar_index_Demand_OB + 1
-    DminOpen := math.min(open[bar_index - bar_index_Demand_OB - 2], open[bar_index - bar_index_Demand_OB + 1], open[bar_index - bar_index_Demand_OB    ], open[bar_index - bar_index_Demand_OB - 1])
-    DminHigh := math.min(high[bar_index - bar_index_Demand_OB - 2], high[bar_index - bar_index_Demand_OB + 1], high[bar_index - bar_index_Demand_OB    ], high[bar_index - bar_index_Demand_OB - 1])
-    DminLow := math.min(low[bar_index - bar_index_Demand_OB - 2], low[bar_index - bar_index_Demand_OB + 1], low[bar_index - bar_index_Demand_OB    ], low[bar_index - bar_index_Demand_OB - 1])
-    DminClose := math.min(close[bar_index - bar_index_Demand_OB - 2], close[bar_index - bar_index_Demand_OB + 1], close[bar_index - bar_index_Demand_OB    ], close[bar_index - bar_index_Demand_OB - 1])
+    DminOpen := math.min(open[demIdx - 2], open[demIdx + 1], open[demIdx    ], open[demIdx - 1])
+    DminHigh := math.min(high[demIdx - 2], high[demIdx + 1], high[demIdx    ], high[demIdx - 1])
+    DminLow := math.min(low[demIdx - 2], low[demIdx + 1], low[demIdx    ], low[demIdx - 1])
+    DminClose := math.min(close[demIdx - 2], close[demIdx + 1], close[demIdx    ], close[demIdx - 1])
 else if   bar_index  >= bar_index_Demand_OB
-    DminOpen := math.min( open[bar_index - bar_index_Demand_OB + 1], open[bar_index - bar_index_Demand_OB    ], open[bar_index - bar_index_Demand_OB - 1])
-    DminHigh := math.min( high[bar_index - bar_index_Demand_OB + 1], high[bar_index - bar_index_Demand_OB    ], high[bar_index - bar_index_Demand_OB - 1])
-    DminLow := math.min( low[bar_index - bar_index_Demand_OB + 1], low[bar_index - bar_index_Demand_OB    ], low[bar_index - bar_index_Demand_OB - 1])
-    DminClose := math.min( close[bar_index - bar_index_Demand_OB + 1], close[bar_index - bar_index_Demand_OB    ], close[bar_index - bar_index_Demand_OB - 1])
+    DminOpen := math.min( open[demIdx + 1], open[demIdx    ], open[demIdx - 1])
+    DminHigh := math.min( high[demIdx + 1], high[demIdx    ], high[demIdx - 1])
+    DminLow := math.min( low[demIdx + 1], low[demIdx    ], low[demIdx - 1])
+    DminClose := math.min( close[demIdx + 1], close[demIdx    ], close[demIdx - 1])
 
 //Demand Max ohlc{Find}
 if  bar_index > bar_index_Demand_OB + 1
-    DmaxOpen := math.max(open[bar_index - bar_index_Demand_OB - 2], open[bar_index - bar_index_Demand_OB + 1], open[bar_index - bar_index_Demand_OB    ], open[bar_index - bar_index_Demand_OB - 1])
-    DmaxHigh := math.max(high[bar_index - bar_index_Demand_OB - 2], high[bar_index - bar_index_Demand_OB + 1], high[bar_index - bar_index_Demand_OB    ], high[bar_index - bar_index_Demand_OB - 1])
-    DmaxLow := math.max(low[bar_index - bar_index_Demand_OB - 2], low[bar_index - bar_index_Demand_OB + 1], low[bar_index - bar_index_Demand_OB    ], low[bar_index - bar_index_Demand_OB - 1])
-    DmaxClose := math.max(close[bar_index - bar_index_Demand_OB - 2], close[bar_index - bar_index_Demand_OB + 1], close[bar_index - bar_index_Demand_OB    ], close[bar_index - bar_index_Demand_OB - 1])
+    DmaxOpen := math.max(open[demIdx - 2], open[demIdx + 1], open[demIdx    ], open[demIdx - 1])
+    DmaxHigh := math.max(high[demIdx - 2], high[demIdx + 1], high[demIdx    ], high[demIdx - 1])
+    DmaxLow := math.max(low[demIdx - 2], low[demIdx + 1], low[demIdx    ], low[demIdx - 1])
+    DmaxClose := math.max(close[demIdx - 2], close[demIdx + 1], close[demIdx    ], close[demIdx - 1])
 else if  bar_index >= bar_index_Demand_OB
-    DmaxOpen := math.max( open[bar_index - bar_index_Demand_OB + 1], open[bar_index - bar_index_Demand_OB    ], open[bar_index - bar_index_Demand_OB - 1])
-    DmaxHigh := math.max( high[bar_index - bar_index_Demand_OB + 1], high[bar_index - bar_index_Demand_OB    ], high[bar_index - bar_index_Demand_OB - 1])
-    DmaxLow := math.max( low[bar_index - bar_index_Demand_OB + 1], low[bar_index - bar_index_Demand_OB    ], low[bar_index - bar_index_Demand_OB - 1])
-    DmaxClose := math.max( close[bar_index - bar_index_Demand_OB + 1], close[bar_index - bar_index_Demand_OB    ], close[bar_index - bar_index_Demand_OB - 1])
+    DmaxOpen := math.max( open[demIdx + 1], open[demIdx    ], open[demIdx - 1])
+    DmaxHigh := math.max( high[demIdx + 1], high[demIdx    ], high[demIdx - 1])
+    DmaxLow := math.max( low[demIdx + 1], low[demIdx    ], low[demIdx - 1])
+    DmaxClose := math.max( close[demIdx + 1], close[demIdx    ], close[demIdx - 1])
 
 
 //Demand Order Block Refiner
@@ -284,36 +287,36 @@ var float DDA = 0.0  //Demand Distal Aggressive
 var float DPA = 0.0  //Demand Proximal Aggressive
 
 if DCRO <= (ATR * 0.5)
-    DPA := high[bar_index - bar_index_Demand_OB]
+    DPA := high[demIdx]
     DDA := DminLow
 else if DCRO > (ATR * 0.5) and DCRO <= ATR
     if Candle_Body > 0 or Candle_Body == 0
-        DPA := close[bar_index - bar_index_Demand_OB]
+        DPA := close[demIdx]
         DDA := DminLow
     else if Candle_Body < 0
-        DPA := open[bar_index - bar_index_Demand_OB]
+        DPA := open[demIdx]
         DDA := DminLow
 else if DCRO > ATR
-    if low[bar_index - bar_index_Demand_OB + 1] < high[bar_index - bar_index_Demand_OB    ]
-        if low[bar_index - bar_index_Demand_OB + 1] > low[bar_index - bar_index_Demand_OB]
-            DPA := low[bar_index - bar_index_Demand_OB + 1]
-            DDA := low[bar_index - bar_index_Demand_OB]
-        else if low[bar_index - bar_index_Demand_OB + 1] <= low[bar_index - bar_index_Demand_OB]
-            if Candle_Body[bar_index - bar_index_Demand_OB + 1] > 0 or Candle_Body[bar_index - bar_index_Demand_OB + 1] == 0
+    if low[demIdx + 1] < high[demIdx    ]
+        if low[demIdx + 1] > low[demIdx]
+            DPA := low[demIdx + 1]
+            DDA := low[demIdx]
+        else if low[demIdx + 1] <= low[demIdx]
+            if Candle_Body[demIdx + 1] > 0 or Candle_Body[demIdx + 1] == 0
                 if DCRa1 > ATR
                     DPA := DmaxOpen
                     DDA := DminLow
                 else if DCRa1 < ATR
                     DPA := DmaxClose
                     DDA := DminLow
-            else if Candle_Body[bar_index - bar_index_Demand_OB + 1] < 0
+            else if Candle_Body[demIdx + 1] < 0
                 if DCRa1 > ATR
                     DPA := DmaxOpen
                     DDA := DminLow
                 else if DCRa1 < ATR
                     DPA := DmaxOpen
                     DDA := DminLow
-    else if not ((low[bar_index - bar_index_Demand_OB + 1] < high[bar_index - bar_index_Demand_OB    ]))
+    else if not ((low[demIdx + 1] < high[demIdx    ]))
         if (DminLow - DminOpen ) > (DminLow - DminClose ) and ((DminLow - DminOpen ) <= ATR and (DminLow - DminOpen ) >= ( ATR*0.5))
             DPA := DminOpen
             DDA := DminLow
@@ -334,9 +337,9 @@ var float SCRa1 = 0.0
 var float SCRO  = 0.0
 var float SCRb1 = 0.0
 
-SCRa1 := high[bar_index -bar_index_Supply_OB + 1] - low[bar_index -bar_index_Supply_OB + 1]
-SCRO  := high[bar_index -bar_index_Supply_OB    ] - low[bar_index -bar_index_Supply_OB    ]
-SCRb1 := high[bar_index -bar_index_Supply_OB - 1] - low[bar_index -bar_index_Supply_OB - 1]
+SCRa1 := high[supIdx + 1] - low[supIdx + 1]
+SCRO  := high[supIdx    ] - low[supIdx    ]
+SCRb1 := high[supIdx - 1] - low[supIdx - 1]
 
 //Supply Min ohlc
 var float SminOpen = 0.0
@@ -351,63 +354,63 @@ var float SmaxLow = 0.0
 var float SmaxClose = 0.0
 
 if  bar_index > bar_index_Supply_OB + 1
-    SminOpen := math.min(open[bar_index - bar_index_Supply_OB - 2], open[bar_index - bar_index_Supply_OB + 1], open[bar_index - bar_index_Supply_OB    ], open[bar_index - bar_index_Supply_OB - 1])
-    SminHigh := math.min(high[bar_index - bar_index_Supply_OB - 2], high[bar_index - bar_index_Supply_OB + 1], high[bar_index - bar_index_Supply_OB    ], high[bar_index - bar_index_Supply_OB - 1])
-    SminLow := math.min(low[bar_index - bar_index_Supply_OB - 2], low[bar_index - bar_index_Supply_OB + 1], low[bar_index - bar_index_Supply_OB    ], low[bar_index - bar_index_Supply_OB - 1])
-    SminClose := math.min(close[bar_index - bar_index_Supply_OB - 2], close[bar_index - bar_index_Supply_OB + 1], close[bar_index - bar_index_Supply_OB    ], close[bar_index - bar_index_Supply_OB - 1])
+    SminOpen := math.min(open[supIdx - 2], open[supIdx + 1], open[supIdx    ], open[supIdx - 1])
+    SminHigh := math.min(high[supIdx - 2], high[supIdx + 1], high[supIdx    ], high[supIdx - 1])
+    SminLow := math.min(low[supIdx - 2], low[supIdx + 1], low[supIdx    ], low[supIdx - 1])
+    SminClose := math.min(close[supIdx - 2], close[supIdx + 1], close[supIdx    ], close[supIdx - 1])
 else if   bar_index  >= bar_index_Supply_OB
-    SminOpen := math.min( open[bar_index - bar_index_Supply_OB + 1], open[bar_index - bar_index_Supply_OB    ], open[bar_index - bar_index_Supply_OB - 1])
-    SminHigh := math.min( high[bar_index - bar_index_Supply_OB + 1], high[bar_index - bar_index_Supply_OB    ], high[bar_index - bar_index_Supply_OB - 1])
-    SminLow := math.min( low[bar_index - bar_index_Supply_OB + 1], low[bar_index - bar_index_Supply_OB    ], low[bar_index - bar_index_Supply_OB - 1])
-    SminClose := math.min( close[bar_index - bar_index_Supply_OB + 1], close[bar_index - bar_index_Supply_OB    ], close[bar_index - bar_index_Supply_OB - 1])
+    SminOpen := math.min( open[supIdx + 1], open[supIdx    ], open[supIdx - 1])
+    SminHigh := math.min( high[supIdx + 1], high[supIdx    ], high[supIdx - 1])
+    SminLow := math.min( low[supIdx + 1], low[supIdx    ], low[supIdx - 1])
+    SminClose := math.min( close[supIdx + 1], close[supIdx    ], close[supIdx - 1])
 
 //Dmand Max ohlc
 if  bar_index > bar_index_Supply_OB + 1
-    SmaxOpen := math.max(open[bar_index - bar_index_Supply_OB - 2], open[bar_index - bar_index_Supply_OB + 1], open[bar_index - bar_index_Supply_OB    ], open[bar_index - bar_index_Supply_OB - 1])
-    SmaxHigh := math.max(high[bar_index - bar_index_Supply_OB - 2], high[bar_index - bar_index_Supply_OB + 1], high[bar_index - bar_index_Supply_OB    ], high[bar_index - bar_index_Supply_OB - 1])
-    SmaxLow := math.max(low[bar_index - bar_index_Supply_OB - 2], low[bar_index - bar_index_Supply_OB + 1], low[bar_index - bar_index_Supply_OB    ], low[bar_index - bar_index_Supply_OB - 1])
-    SmaxClose := math.max(close[bar_index - bar_index_Supply_OB - 2], close[bar_index - bar_index_Supply_OB + 1], close[bar_index - bar_index_Supply_OB    ], close[bar_index - bar_index_Supply_OB - 1])
+    SmaxOpen := math.max(open[supIdx - 2], open[supIdx + 1], open[supIdx    ], open[supIdx - 1])
+    SmaxHigh := math.max(high[supIdx - 2], high[supIdx + 1], high[supIdx    ], high[supIdx - 1])
+    SmaxLow := math.max(low[supIdx - 2], low[supIdx + 1], low[supIdx    ], low[supIdx - 1])
+    SmaxClose := math.max(close[supIdx - 2], close[supIdx + 1], close[supIdx    ], close[supIdx - 1])
 else if  bar_index >= bar_index_Supply_OB
-    SmaxOpen := math.max( open[bar_index - bar_index_Supply_OB + 1], open[bar_index - bar_index_Supply_OB    ], open[bar_index - bar_index_Supply_OB - 1])
-    SmaxHigh := math.max( high[bar_index - bar_index_Supply_OB + 1], high[bar_index - bar_index_Supply_OB    ], high[bar_index - bar_index_Supply_OB - 1])
-    SmaxLow := math.max( low[bar_index - bar_index_Supply_OB + 1], low[bar_index - bar_index_Supply_OB    ], low[bar_index - bar_index_Supply_OB - 1])
-    SmaxClose := math.max( close[bar_index - bar_index_Supply_OB + 1], close[bar_index - bar_index_Supply_OB    ], close[bar_index - bar_index_Supply_OB - 1])
+    SmaxOpen := math.max( open[supIdx + 1], open[supIdx    ], open[supIdx - 1])
+    SmaxHigh := math.max( high[supIdx + 1], high[supIdx    ], high[supIdx - 1])
+    SmaxLow := math.max( low[supIdx + 1], low[supIdx    ], low[supIdx - 1])
+    SmaxClose := math.max( close[supIdx + 1], close[supIdx    ], close[supIdx - 1])
 
 //Supply Order Block Refiner
 var float SDA = 0.0  //Supply Distal Aggressive
 var float SPA = 0.0  //Supply Proximal Aggressive
 
 if SCRO <= (ATR * 0.5)
-    SPA := low[bar_index - bar_index_Supply_OB]
+    SPA := low[supIdx]
     SDA := SmaxHigh
 else if SCRO > (ATR * 0.5) and SCRO <= ATR
     if Candle_Body > 0 or Candle_Body == 0
-        SPA := close[bar_index - bar_index_Supply_OB]
+        SPA := close[supIdx]
         SDA := SmaxHigh
     else if Candle_Body < 0
-        SPA := open[bar_index - bar_index_Supply_OB]
+        SPA := open[supIdx]
         SDA := SmaxHigh
 else if SCRO > ATR
-    if high[bar_index - bar_index_Supply_OB - 1] > low[bar_index - bar_index_Supply_OB    ]
-        if high[bar_index - bar_index_Supply_OB - 1] > high[bar_index - bar_index_Supply_OB]
-            SPA := high[bar_index - bar_index_Supply_OB - 1]
-            SDA := high[bar_index - bar_index_Supply_OB]
-        else if high[bar_index - bar_index_Supply_OB - 1] <= high[bar_index - bar_index_Supply_OB]
-            if Candle_Body[bar_index - bar_index_Supply_OB - 1] > 0 or Candle_Body[bar_index - bar_index_Supply_OB - 1] == 0
+    if high[supIdx - 1] > low[supIdx    ]
+        if high[supIdx - 1] > high[supIdx]
+            SPA := high[supIdx - 1]
+            SDA := high[supIdx]
+        else if high[supIdx - 1] <= high[supIdx]
+            if Candle_Body[supIdx - 1] > 0 or Candle_Body[supIdx - 1] == 0
                 if SCRa1 > ATR
                     SPA := SminClose
                     SDA := SmaxHigh
                 else if SCRa1 < ATR
                     SPA := SminOpen
                     SDA := SmaxHigh
-            else if Candle_Body[bar_index - bar_index_Supply_OB - 1] < 0
+            else if Candle_Body[supIdx - 1] < 0
                 if SCRa1 > ATR
                     SPA := SminOpen
                     SDA := SmaxHigh
                 else if SCRa1 < ATR
                     SPA := SmaxHigh
-                    SDA := high[bar_index - bar_index_Supply_OB - 1]
-    else if not ((high[bar_index - bar_index_Supply_OB + 1] > low[bar_index - bar_index_Supply_OB    ]))
+                    SDA := high[supIdx - 1]
+    else if not ((high[supIdx + 1] > low[supIdx    ]))
         if (SmaxHigh - SminOpen ) > (SmaxHigh - SminClose ) and ((SmaxHigh - SminOpen ) <= ATR and (SmaxHigh - SminOpen ) >= ( ATR*0.5))
             SPA := SminOpen
             SDA := SmaxHigh
@@ -474,19 +477,19 @@ else  if RefineType == 'Aggressive'
 ////////////////////////
 if Demand_OB_Condition
     DemandCheck := bar_index_Demand_OB
-    YDp12   := OBRefine == 'On' ? DProximal : high[bar_index - bar_index_Demand_OB]
+    YDp12   := OBRefine == 'On' ? DProximal : high[demIdx]
     XDp1    := bar_index_Demand_OB
     XDp2    := bar_index_Demand_OB + 1
-    YDd12   := OBRefine == 'On' ? DDistal : low[bar_index - bar_index_Demand_OB]
+    YDd12   := OBRefine == 'On' ? DDistal : low[demIdx]
     XDd1    := bar_index_Demand_OB
     XDd2    := bar_index_Demand_OB + 1
 
 if Supply_OB_Condition
     SupplyCheck := bar_index_Supply_OB
-    YSp12   := OBRefine == 'On' ? SProximal : low[bar_index - bar_index_Supply_OB]
+    YSp12   := OBRefine == 'On' ? SProximal : low[supIdx]
     XSp1    := bar_index_Supply_OB
     XSp2    := bar_index_Supply_OB + 1
-    YSd12   :=  OBRefine == 'On' ? SDistal : high[bar_index - bar_index_Supply_OB]
+    YSd12   :=  OBRefine == 'On' ? SDistal : high[supIdx]
     XSd1    := bar_index_Supply_OB
     XSd2    := bar_index_Supply_OB + 1
 
