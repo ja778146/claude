@@ -55,18 +55,10 @@ Candle_Range = high - low
 Candle_Body = close - open
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Candle Trend Detector
-Candle_Trend = if Candle_Body > 0
-    "Candle Positive"
-else if Candle_Body < 0
-    "Candle Negative"
-else
-    "Candle no Trend"
+Candle_Trend = Candle_Body > 0 ? "Candle Positive" : Candle_Body < 0 ? "Candle Negative" : "Candle no Trend"
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Candle Break Detector
-Candle_Break = if close > high[1]
-    "Candle Bull Break"
-else if close < low[1]
-    "Candle Bear Break"
+Candle_Break = close > high[1] ? "Candle Bull Break" : close < low[1] ? "Candle Bear Break" : na
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //High and Low Detector
 
@@ -82,24 +74,12 @@ lenLowest = bar_index - bar_index_bull + 5
 lenHighest1 = bar_index - bar_index_bear + 3
 lenLowest1 = bar_index - bar_index_bull + 3
 ///////////////
-HighestLen =if not na(lenHighest)
-    lenHighest
-else
-    1
-LowestLen = if not na (lenLowest)
-    lenLowest
-else
-    1
+HighestLen = not na(lenHighest) ? lenHighest : 1
+LowestLen = not na(lenLowest) ? lenLowest : 1
 
 ///////////////
-HighestLen1 =if not na(lenHighest1)
-    lenHighest1
-else
-    1
-LowestLen1 = if not na (lenLowest1)
-    lenLowest1
-else
-    1
+HighestLen1 = not na(lenHighest1) ? lenHighest1 : 1
+LowestLen1 = not na(lenLowest1) ? lenLowest1 : 1
 
 
 //All High and Low Detector
@@ -112,30 +92,18 @@ Low_first1 = ta.lowest(low, LowestLen1)
 //All Correct High and Low Detector
 var float High_Correct = 0.0
 var float Low_Correct = 0.0
-High_sec = if Candle_Break == "Candle Bear Break" and Candle_Break[1] =="Candle Bull Break"
-    start_bar_index_high := bar_index
-    if High_Correct[1] == High_first
-        High_first1
-    else
-        High_first
+cond_h = Candle_Break == "Candle Bear Break" and Candle_Break[1] == "Candle Bull Break"
+start_bar_index_high := cond_h ? bar_index : start_bar_index_high
+High_sec = cond_h ? (High_Correct[1] == High_first ? High_first1 : High_first) : na
 
-Low_sec = if (Candle_Break == "Candle Bull Break" and Candle_Break[1] =="Candle Bear Break")
-    start_bar_index_low := bar_index
-    if Low_Correct[1] == Low_first
-        Low_first1
-    else
-        Low_first
+cond_l = Candle_Break == "Candle Bull Break" and Candle_Break[1] == "Candle Bear Break"
+start_bar_index_low := cond_l ? bar_index : start_bar_index_low
+Low_sec = cond_l ? (Low_Correct[1] == Low_first ? Low_first1 : Low_first) : na
 
 
-High_Correct := if not na(High_sec)
-    High_sec
-else
-    High_sec[1]
+High_Correct := not na(High_sec) ? High_sec : High_sec[1]
 
-Low_Correct := if not na(Low_sec)
-    Low_sec
-else
-    Low_sec[1]
+Low_Correct := not na(Low_sec) ? Low_sec : Low_sec[1]
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -148,36 +116,11 @@ var float Low_Correct_f = 0.0
 
 
 //Major Correct High and Low Detector
-High_Correct_f := if High_Correct_f == 0
-    High_Correct
-else if High_Correct > High_Correct_f[1] and High_Correct_f != 0
-    High_Correct
-else if High_Correct < High_Correct_f[1]
-    if BoS == 'Bear BoS' and (bar_index_bear_BoS >= start_bar_index_high)
-        High_Correct
-    else
-        High_Correct_f
-else if High_Correct_f == High_Correct_f[1] and High_Correct_f != 0
-    High_Correct_f
-
-else
-    High_Correct
+High_Correct_f := High_Correct_f == 0 ? High_Correct : (High_Correct > High_Correct_f[1] and High_Correct_f != 0) ? High_Correct : (High_Correct < High_Correct_f[1]) ? ((BoS == 'Bear BoS' and (bar_index_bear_BoS >= start_bar_index_high)) ? High_Correct : High_Correct_f) : (High_Correct_f == High_Correct_f[1] and High_Correct_f != 0) ? High_Correct_f : High_Correct
 
 
 
-Low_Correct_f := if Low_Correct_f == 0
-    Low_Correct
-else if Low_Correct < Low_Correct_f[1] and Low_Correct_f != 0
-    Low_Correct
-else if Low_Correct > Low_Correct_f[1]
-    if BoS == 'Bull BoS' and  (bar_index_bull_BoS >= start_bar_index_low)
-        Low_Correct
-    else
-        Low_Correct_f
-else if Low_Correct_f == Low_Correct_f[1] and Low_Correct_f != 0
-    Low_Correct_f
-else
-    Low_Correct
+Low_Correct_f := Low_Correct_f == 0 ? Low_Correct : (Low_Correct < Low_Correct_f[1] and Low_Correct_f != 0) ? Low_Correct : (Low_Correct > Low_Correct_f[1]) ? ((BoS == 'Bull BoS' and (bar_index_bull_BoS >= start_bar_index_low)) ? Low_Correct : Low_Correct_f) : (Low_Correct_f == Low_Correct_f[1] and Low_Correct_f != 0) ? Low_Correct_f : Low_Correct
 
 
 
