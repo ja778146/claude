@@ -1,0 +1,8 @@
+# Secrets — never commit real tokens
+.env
+.env.local
+*.local
+
+# Editor / OS
+.DS_Store
+node_modules/

@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "ghl": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://services.leadconnectorhq.com/mcp/",
+        "--header",
+        "Authorization: Bearer ${GHL_MCP_TOKEN}"
+      ]
+    }
+  }
+}
